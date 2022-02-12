@@ -11,13 +11,13 @@ html
             script:
                 console.log("hi")
             end
-            div .red (err)
+            div .red
                 require test.sass
         p
             "hi"
         div
         div .class
-    style attr lang="sass"
+    style attr lang="sass":
         a
             color: blue
     end

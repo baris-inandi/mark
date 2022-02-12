@@ -25,7 +25,6 @@ def handle_block_node(lines, block_start, index, block_decleration,
             block_inner = styling.to_css(block_inner, styling_lang)
         else:
             block_inner = minify.css(block_inner)
-        print(block_inner)
     n = Node(block_decleration[:-1], block_start + 1)
     n.block_inner = block_inner
     n.indent = block_name_indentation
