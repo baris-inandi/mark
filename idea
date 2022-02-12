@@ -1,0 +1,23 @@
+html
+    body
+        div .red .big
+            "hello second word"
+        div .hi
+        p .hello
+        div .hi
+            span #ho
+                "hello second word"
+            "text second word"
+            script:
+                console.log("hi")
+            end
+            div .red (err)
+                require test.sass
+        p
+            "hi"
+        div
+        div .class
+    style attr lang="sass"
+        a
+            color: blue
+    end
