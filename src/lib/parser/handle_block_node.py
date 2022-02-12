@@ -1,4 +1,4 @@
-from src.lib import minify
+from src.lib.lang import minify
 from src.classes.node import Node
 from src.lib.lang import styling
 

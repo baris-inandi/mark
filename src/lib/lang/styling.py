@@ -40,12 +40,12 @@ def to_css(code: str, lang: str, filename: str = ""):
         elif lang == "less":
             import lesscpy
             from six import StringIO
-            from src.lib import minify
+            from src.lib.lang import minify
             # lesscpy.compile() does not properly minify, so use minify.css()
             return minify.css(lesscpy.compile(StringIO(code)))
     except Exception as e:
         throw(
-            (f'Cannot compile {lang.upper()}\nPreprocessor Message:\n\n    ' +
+            (f'Cannot compile {lang.upper()}\nPreprocessor Output:\n\n    ' +
              str(e).replace('\n', '\n    ')),
             docs='preprocess',
         )
