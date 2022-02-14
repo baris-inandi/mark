@@ -19,6 +19,7 @@ from src.lib.lang import styling
 from termcolor import colored
 from src import config
 from src.lib.parser.read_code_file import read_code_file
+from os import getcwd
 
 
 def require_preprocessor(uri: str, lang: str):
@@ -44,7 +45,9 @@ def require_html(uri: str):
         s = colored(uri, "yellow")
         throw([
             f"Require: File not found: {s}",
-        ], docs="require")
+            f"in working directory: {getcwd()}"
+        ],
+              docs="require")
 
 
 def require_markdown(uri: str):
@@ -56,7 +59,9 @@ def require_markdown(uri: str):
         s = colored(uri, "yellow")
         throw([
             f"Require: File not found: {s}",
-        ], docs="require")
+            f"in working directory: {getcwd()}"
+        ],
+              docs="require")
 
 
 def require(line: str, line_number: int) -> Node:
@@ -98,7 +103,7 @@ def require(line: str, line_number: int) -> Node:
         return n
     elif ext == config.extension:
         n = Node("_module", line_number)
-        n.indent, n.block_inner = indent, read_code_file(uri, True)
+        n.indent, n.block_inner = indent, uri
         return n
     else:
         throw([

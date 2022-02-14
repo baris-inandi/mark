@@ -1,2 +1,2 @@
 extension = "mark"
-module_decleration = "// !MOD"
+module_decleration = "// !mod"

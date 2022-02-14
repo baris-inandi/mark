@@ -2,6 +2,7 @@ from src.lib.parser.remove_comments import remove_comments
 from src.lib.error import throw
 from termcolor import colored
 from src import config
+from os import getcwd
 
 
 def read_code_file(filename: str, require_module: bool = False):
@@ -20,6 +21,5 @@ def read_code_file(filename: str, require_module: bool = False):
             return remove_comments(read_lines).split("\n")
     except FileNotFoundError:
         s = colored(filename, "yellow")
-        throw([
-            f"File not found: {s}",
-        ], docs="require")
+        throw([f"File not found: {s}", f"in working directory: {getcwd()}"],
+              docs="require")

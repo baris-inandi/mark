@@ -19,8 +19,7 @@ def parse(filename: str, require_module: bool = False) -> list[Node]:
     lines = read_code_file(filename, require_module)
 
     out: list[Node] = []
-    block_start = -1
-    skip_index = 0
+    block_start, skip_index = -1, 0
 
     for index, line in enumerate(lines):
         if skip_index > 0:
@@ -81,6 +80,9 @@ def parse(filename: str, require_module: bool = False) -> list[Node]:
 
     for i in out:
         i.parse_attr()
-        # print(i.line, i.opening_tag())
+        # recurse to transpile all modules
+        print(i.line, i.tag, i.block_inner)
+        if i.tag == "_module":
+            parse(i.block_inner)  # block_inner of a module is the path to it.
 
     return out
