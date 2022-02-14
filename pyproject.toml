@@ -13,6 +13,7 @@ libsass = "^0.21.0"
 lesscpy = "^0.15.0"
 six = "^1.16.0"
 termcolor = "^1.1.0"
+Markdown = "^3.3.6"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"

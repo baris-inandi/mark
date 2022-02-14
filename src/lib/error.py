@@ -6,7 +6,8 @@ docs_urls = {
     "require": "/require",
     "blocks": "/blocks",
     "selectors": "/selectors",
-    "preprocess": "/styling/preprocessors"
+    "preprocess": "/styling/preprocessors",
+    "module": "modules"
 }
 
 file = "<unknown>"

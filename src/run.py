@@ -3,6 +3,6 @@ from src.classes.dom import Dom
 
 
 def run():
-    nodes = parse("idea")
+    nodes = parse("idea.mark")
     dom = Dom(nodes)
     dom.to_html()

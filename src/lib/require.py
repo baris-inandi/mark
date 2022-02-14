@@ -17,6 +17,8 @@ from src.lib.error import throw
 from src.classes.node import Node
 from src.lib.lang import styling
 from termcolor import colored
+from src import config
+from src.lib.parser.read_code_file import read_code_file
 
 
 def require_preprocessor(uri: str, lang: str):
@@ -38,6 +40,18 @@ def require_html(uri: str):
     try:
         with open(uri) as f:
             return f.read()
+    except FileNotFoundError:
+        s = colored(uri, "yellow")
+        throw([
+            f"Require: File not found: {s}",
+        ], docs="require")
+
+
+def require_markdown(uri: str):
+    try:
+        import markdown
+        with open(uri) as f:
+            return markdown.markdown(f.read())
     except FileNotFoundError:
         s = colored(uri, "yellow")
         throw([
@@ -75,13 +89,21 @@ def require(line: str, line_number: int) -> Node:
         n.indent, n.block_inner = indent, require_preprocessor(uri, ext)
         return n
     elif ext in ["html", "htm"]:
-        n = Node("div .require-html", line_number)
+        n = Node("_document", line_number)
         n.indent, n.block_inner = indent, require_html(uri)
+        return n
+    elif ext == "md":
+        n = Node("_document", line_number)
+        n.indent, n.block_inner = indent, require_markdown(uri)
+        return n
+    elif ext == config.extension:
+        n = Node("_module", line_number)
+        n.indent, n.block_inner = indent, read_code_file(uri, True)
         return n
     else:
         throw([
             f'Unexpected filetype in require statement: ".{ext}"',
             'Require only accepts the following filetypes:',
-            '.js .css .sass .scss .less .html .htm',
+            f'.js .css .sass .scss .less .html .htm .md .{config.extension}',
         ],
               docs="require")

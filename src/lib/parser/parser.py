@@ -1,23 +1,22 @@
 from src.classes.node import Node
-from src.lib.parser.remove_comments import remove_comments
 from src.lib.error import throw, error_file
 from src.lib.parser.handle_markup import handle_markup
 from src.lib.parser.handle_block_node import handle_block_node
 from src.lib.utils import indentation_level
+from src.lib.parser.read_code_file import read_code_file
 
 
 def is_block(test: str, tester: str) -> bool:
     return test.startswith(tester) and test.endswith(":")
 
 
-def parse(filename: str) -> list[Node]:
+def parse(filename: str, require_module: bool = False) -> list[Node]:
     """
     Gets parameter filename
     Parses code into a list of nodes.
     """
 
-    with open(filename) as f:
-        lines = remove_comments(f.read()).split("\n")
+    lines = read_code_file(filename, require_module)
 
     out: list[Node] = []
     block_start = -1

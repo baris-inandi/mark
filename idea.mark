@@ -17,6 +17,7 @@ html
             "hi"
         div
         div .class
+            require mod.mark
     style attr lang="sass":
         a
             color: blue
