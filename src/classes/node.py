@@ -7,6 +7,16 @@ class Node:
         """
             class Node:
             represents a single HTML element Eg. <div>
+
+            special nodes:
+                _document
+                    represents a piece of html that is imported using require.
+                    its block_inner is the html code that is imported.
+                _module
+                    represents a module that is imported using require.
+                    these modules should be parsed by the parser first.
+                _plaintext
+                    a text child of a node with no tags
         """
 
         # The HTML tag of the Node Eg. "div"

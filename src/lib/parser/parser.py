@@ -1,22 +1,23 @@
 from src.classes.node import Node
-from src.lib.error import throw, error_file
+from src.lib.error import throw, error_file, error_line
 from src.lib.parser.handle_markup import handle_markup
 from src.lib.parser.handle_block_node import handle_block_node
 from src.lib.utils import indentation_level
 from src.lib.parser.read_code_file import read_code_file
+from src.classes.dom import Dom
 
 
 def is_block(test: str, tester: str) -> bool:
     return test.startswith(tester) and test.endswith(":")
 
 
-def parse(filename: str, require_module: bool = False) -> list[Node]:
+def parse(lines: list[str], filename: str) -> list[Node]:
     """
     Gets parameter filename
     Parses code into a list of nodes.
     """
 
-    lines = read_code_file(filename, require_module)
+    error_file(filename)
 
     out: list[Node] = []
     block_start, skip_index = -1, 0
@@ -26,7 +27,7 @@ def parse(filename: str, require_module: bool = False) -> list[Node]:
             skip_index -= 1
             continue
 
-        error_file(filename)
+        error_line(index)
 
         ##########
         # Blocks #
@@ -78,11 +79,11 @@ def parse(filename: str, require_module: bool = False) -> list[Node]:
         throw(["Unclosed block found.", "Use \"end\" to close a block"],
               docs="blocks")
 
-    for i in out:
-        i.parse_attr()
-        # recurse to transpile all modules
-        print(i.line, i.tag, i.block_inner)
-        if i.tag == "_module":
-            parse(i.block_inner)  # block_inner of a module is the path to it.
+    for i, n in enumerate(out):
+        if n.tag == "_module":
+            module_compiled = Dom(
+                parse(read_code_file(n.block_inner, True),
+                      n.block_inner)).to_html()
+            n.block_inner, n.tag, n.line = module_compiled, "_document", ""
 
     return out

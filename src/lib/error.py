@@ -7,15 +7,21 @@ docs_urls = {
     "blocks": "/blocks",
     "selectors": "/selectors",
     "preprocess": "/styling/preprocessors",
-    "module": "modules"
+    "module": "/modules"
 }
 
-file = "<unknown>"
+err_file = "<unknown>"
+err_line = 0
 
 
-def error_file(f):
-    global file
-    file = f
+def error_file(x):
+    global err_file
+    err_file = x
+
+
+def error_line(x):
+    global err_line
+    err_line = x
 
 
 def complain(level: str, msg: str):
@@ -27,11 +33,10 @@ def complain(level: str, msg: str):
     print(msg)
 
 
-def dump_lines(filename: str, line: int):
-    line = 20
+def dump_lines(filename: str):
+    print()
     try:
-        line -= 1
-        print()
+        line = err_line
         with open(filename) as f:
             lines = f.readlines()
         lines = [*([""] * 3), *lines, *([""] * 3)]
@@ -50,7 +55,9 @@ def dump_lines(filename: str, line: int):
                 lhs = colored(lhs, "white", "on_red")
             print(f"{lhs}  {truncated_code}", end="")
         print()
-    except Exception:
+    except Exception as e:
+        cprint("Visualizer failed due to: ", "red", end="")
+        print(e, end="\n\n")
         return
 
 
@@ -62,9 +69,9 @@ def throw(msg, no_exit: bool = False, **kwargs):
         for m in msg:
             complain("error", m)
 
-    line = kwargs.get("line", "<unknown>")
-    dump_lines(file, line)
-    cprint(f"[in {file}:{line}]", "blue")
+    dump_lines(err_file)
+
+    cprint(f"[in {err_file}:{err_line}]", "blue")
     try:
         cprint(base_uri + docs_urls[kwargs["docs"]], attrs=["underline"])
     except KeyError:

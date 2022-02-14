@@ -1,4 +1,4 @@
-from src.lib.require import require
+from src.lib.require.require import require
 from src.classes.node import Node
 from src.lib.utils import indentation_level
 
@@ -27,7 +27,7 @@ def handle_markup(tree: list[Node], line: str, index: int) -> list[Node]:
         tree.append(n)
     elif tag == "require":
         # Require statement
-        tree.append(require(line, index+1))
+        tree.append(require(line, index + 1))
     else:
         # Node
         tree.append(Node(line, index + 1))

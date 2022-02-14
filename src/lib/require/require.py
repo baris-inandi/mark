@@ -1,25 +1,40 @@
 """
     require
-    for easy import of files.
+    a bundler for Mark.
 
-    require index.js
-        can be used as a shorthand instead of:
-    script attr src="index.js"
+    Require is a bundler that can be used to bundle up a set of files.
 
-    or
+    scripts
+        require foo.js
 
-    require global.css
-        can be used as a shorthand instead of:
-    link attr rel="stylesheet" href="styles.css"
+    styles
+        require foo.css
+        require foo.scss
+        require foo.sass
+        require foo.less
+
+    markup
+        require foo.html
+        require foo.htm
+        require foo.mark  <- should be a module
+        require foo.md
+
+    external
+        require @tailwind
+        require @bootstrap
+        require @jquery
+        require @lodash
+        require @fontawesome
+        require @petite-vue
 """
 
 from src.lib.error import throw
 from src.classes.node import Node
 from src.lib.lang import styling
 from termcolor import colored
-from src import config
-from src.lib.parser.read_code_file import read_code_file
+from src.lib.require.external_require import external_require
 from os import getcwd
+from src import config
 
 
 def require_preprocessor(uri: str, lang: str):
@@ -37,7 +52,7 @@ def require_preprocessor(uri: str, lang: str):
               docs="require")
 
 
-def require_html(uri: str):
+def require_plaintext_file(uri: str):
     try:
         with open(uri) as f:
             return f.read()
@@ -54,7 +69,10 @@ def require_markdown(uri: str):
     try:
         import markdown
         with open(uri) as f:
-            return markdown.markdown(f.read())
+            try:
+                return markdown.markdown(f.read())
+            except Exception as e:
+                throw("invalid Markdown: " + str(e))
     except FileNotFoundError:
         s = colored(uri, "yellow")
         throw([
@@ -70,6 +88,10 @@ def require(line: str, line_number: int) -> Node:
     indent = len(line) - len(line.lstrip())
     line = line.strip()
     split = line.split("attr", 1)
+
+    if len(split) > 1:
+        throw("Require doesn't not accept any attributes", docs="require")
+
     lhs = split[0].strip().split(" ")
     if len(lhs) < 2:
         throw("Require statement must specify a uri", docs="require")
@@ -77,17 +99,23 @@ def require(line: str, line_number: int) -> Node:
         throw("Require statement must have exactly one uri specified",
               docs="require")
     uri = lhs[1]
-    rhs = split[1].strip() if len(split) > 1 else ""
+
+    if uri.startswith("@"):
+        return external_require(uri, line_number)
+
+    # rhs = split[1].strip() if len(split) > 1 else ""
     ext = uri.split(".")[-1]
 
     # create a new element
     if ext == "js":
-        n = Node(f'script attr src="{uri}" {rhs}', line_number)
+        n = Node("_document", line_number)
         n.indent = indent
+        n.block_inner = f"<s>{require_plaintext_file(uri)}</script>"
         return n
     elif ext == "css":
-        n = Node(f'link attr rel="stylesheet" href="{uri}" {rhs}', line_number)
+        n = Node("_document", line_number)
         n.indent = indent
+        n.block_inner = f"<style>{require_plaintext_file(uri)}</style>"
         return n
     elif ext in ["scss", "sass", "less"]:
         n = Node("style", line_number)
@@ -95,7 +123,7 @@ def require(line: str, line_number: int) -> Node:
         return n
     elif ext in ["html", "htm"]:
         n = Node("_document", line_number)
-        n.indent, n.block_inner = indent, require_html(uri)
+        n.indent, n.block_inner = indent, require_plaintext_file(uri)
         return n
     elif ext == "md":
         n = Node("_document", line_number)

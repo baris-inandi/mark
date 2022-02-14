@@ -12,5 +12,6 @@ class Dom:
     def to_html(self):
         out = ""
         for node in self.nodes:
+            node.parse_attr()
             out += node.indent * " " + node.opening_tag() + "\n"
         return "<div></div>"

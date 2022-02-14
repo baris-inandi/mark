@@ -1,9 +1,8 @@
-def remove_comments(code: str) -> str:
+def remove_comments(code) -> str:
+    if type(code) == list:
+        code = "".join(code)
+    in_comment, oneline, multiline, skip_buffer = False, False, False, 0
     out = ""
-    in_comment = False
-    oneline = False
-    multiline = False
-    skip_buffer = 0
     for index, char in enumerate(code):
         if skip_buffer > 0:
             skip_buffer -= 1

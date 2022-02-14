@@ -6,6 +6,7 @@ from os import getcwd
 
 
 def read_code_file(filename: str, require_module: bool = False):
+    # TODO: does not work at all, for some reason :/
     try:
         with open(filename) as f:
             read_lines = f.readlines()
