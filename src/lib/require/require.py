@@ -5,27 +5,19 @@
     Require is a bundler that can be used to bundle up a set of files.
 
     scripts
-        require foo.js
-
+      require foo.js
     styles
-        require foo.css
-        require foo.scss
-        require foo.sass
-        require foo.less
-
+      require foo.css
+      require foo.scss
+      require foo.sass
+      require foo.less
     markup
-        require foo.html
-        require foo.htm
-        require foo.mark  <- should be a module
-        require foo.md
-
+      require foo.html
+      require foo.htm
+      require foo.mark  <- should be a module
+      require foo.md
     external
-        require @tailwind
-        require @bootstrap
-        require @jquery
-        require @lodash
-        require @fontawesome
-        require @petite-vue
+      refer to external_require.py
 """
 
 from src.lib.error import throw
