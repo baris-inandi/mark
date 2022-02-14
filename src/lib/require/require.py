@@ -25,6 +25,7 @@ from src.classes.node import Node
 from src.lib.lang import styling
 from termcolor import colored
 from src.lib.require.external_require import external_require
+from src.lib.lang import minify
 from os import getcwd
 from src import config
 
@@ -93,7 +94,7 @@ def require(line: str, line_number: int) -> Node:
     uri = lhs[1]
 
     if uri.startswith("@"):
-        return external_require(uri, line_number)
+        return external_require(uri, line_number, indent)
 
     # rhs = split[1].strip() if len(split) > 1 else ""
     ext = uri.split(".")[-1]
@@ -102,12 +103,14 @@ def require(line: str, line_number: int) -> Node:
     if ext == "js":
         n = Node("_document", line_number)
         n.indent = indent
-        n.block_inner = f"<s>{require_plaintext_file(uri)}</script>"
+        n.block_inner = minify.js(
+            f"<script>{require_plaintext_file(uri)}</script>")
         return n
     elif ext == "css":
         n = Node("_document", line_number)
         n.indent = indent
-        n.block_inner = f"<style>{require_plaintext_file(uri)}</style>"
+        n.block_inner = minify.css(
+            f"<style>{require_plaintext_file(uri)}</style>")
         return n
     elif ext in ["scss", "sass", "less"]:
         n = Node("style", line_number)
@@ -121,7 +124,7 @@ def require(line: str, line_number: int) -> Node:
         n = Node("_document", line_number)
         n.indent, n.block_inner = indent, require_markdown(uri)
         return n
-    elif ext == config.extension:
+    elif ext == config.EXTENSION:
         n = Node("_module", line_number)
         n.indent, n.block_inner = indent, uri
         return n
@@ -129,6 +132,6 @@ def require(line: str, line_number: int) -> Node:
         throw([
             f'Unexpected filetype in require statement: ".{ext}"',
             'Require only accepts the following filetypes:',
-            f'.js .css .sass .scss .less .html .htm .md .{config.extension}',
+            f'.js .css .sass .scss .less .html .htm .md .{config.EXTENSION}',
         ],
               docs="require")

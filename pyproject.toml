@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "neomarkup"
+name = "Mark"
 version = "0.0.0"
 description = "Never write a single line of HTML anymore! A modern markup language for the 21st century"
 authors = ["baris-inandi <68742481+baris-inandi@users.noreply.github.com>"]

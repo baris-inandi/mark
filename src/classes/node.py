@@ -17,6 +17,9 @@ class Node:
                     these modules should be parsed by the parser first.
                 _plaintext
                     a text child of a node with no tags
+                _null
+                    does not represent an HTML element, used for internal
+                    purposes in the Dom.to_html() method
         """
 
         # The HTML tag of the Node Eg. "div"
@@ -43,6 +46,12 @@ class Node:
 
     def opening_tag(self):
         return f"<{self.tag}{' ' if self.attr else ''}{self.attr}>"
+
+    def closing_tag(self):
+        return f"</{self.tag}>"
+
+    def open_close_tag(self):
+        return f"{self.opening_tag()}{self.closing_tag()}"
 
     def parse_attr(self) -> str:
         """

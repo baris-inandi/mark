@@ -1,2 +1,2 @@
-extension = "mark"
-module_decleration = "// mod"
+EXTENSION = "mark"
+MODULE_DECLERATION = "// mod"

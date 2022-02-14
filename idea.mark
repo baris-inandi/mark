@@ -11,13 +11,9 @@ html
             script:
                 console.log("hi")
             end
-            div .red
-                require test.sass
         p
             "hi"
-        div
         div .class
-            require mod.mark
     style attr lang="sass":
         a
             color: blue

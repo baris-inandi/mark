@@ -1,10 +1,10 @@
 // mod
-require style/style.css
-require style/style.less
-require style/style.sass
-require style/style.scss
-
-style attr lang="sass":
-    a
-        background: red
-end
+div .styles
+    require style/style.css
+    require style/style.less
+    require style/style.sass
+    require style/style.scss
+    style attr lang="sass":
+        a
+            background: red
+    end

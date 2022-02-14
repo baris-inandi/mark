@@ -11,8 +11,8 @@ def read_code_file(filename: str, require_module: bool = False):
         with open(filename) as f:
             read_lines = f.readlines()
             if require_module and read_lines[0].strip(
-            ) != config.module_decleration:
-                mod_def = colored(config.module_decleration, "yellow")
+            ) != config.MODULE_DECLERATION:
+                mod_def = colored(config.MODULE_DECLERATION, "yellow")
                 throw([
                     f"File not a module: \"{colored(filename, 'yellow')}\"",
                     f"Use \"{mod_def}\" in the first line of the file",
