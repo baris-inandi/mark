@@ -1,0 +1,5 @@
+// !mod
+div .test
+
+require js/index.js
+require contents/test.md
