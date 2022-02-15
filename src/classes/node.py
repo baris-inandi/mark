@@ -45,10 +45,12 @@ class Node:
         return out
 
     def opening_tag(self):
+        if self.tag.startswith("_"):
+            return self.block_inner
         return f"<{self.tag}{' ' if self.attr else ''}{self.attr}>"
 
     def closing_tag(self):
-        return f"</{self.tag}>"
+        return "" if self.tag.startswith("_") else f"</{self.tag}>"
 
     def open_close_tag(self):
         return f"{self.opening_tag()}{self.closing_tag()}"
