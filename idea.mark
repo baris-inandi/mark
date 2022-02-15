@@ -1,4 +1,8 @@
 html
+    head
+        meta attr x="y"
+        meta attr x="y"
+        meta attr x="y"
     body
         div .red .big
             "hello second word"
