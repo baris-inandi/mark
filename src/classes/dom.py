@@ -27,13 +27,14 @@ class Dom:
                 next_node = self.nodes[index + 1]
                 node.parse_attr()
                 out += " " * node.indent + node.opening_tag() + "\n"
+                if node.indent >= next_node.indent:
+                    out += " " * node.indent + node.closing_tag() + "\n"
                 if node.indent < next_node.indent:
                     # right tab
                     stack.append(node)
-                else:
-                    # left tab
-                    if node.indent > next_node.indent:
-                        stack.pop()
+                elif node.indent > next_node.indent:
                     parent = stack[-1]
+                    stack.pop()
                     out += " " * parent.indent + parent.closing_tag() + "\n"
+                print(stack)
         return out

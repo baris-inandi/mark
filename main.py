@@ -17,4 +17,4 @@
 
 from src.run import run
 
-run("require-test/main.mark")
+run("idea.mark")

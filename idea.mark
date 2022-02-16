@@ -12,13 +12,3 @@ html
             span #ho
                 "hello second word"
             "text second word"
-            script:
-                console.log("hi")
-            end
-        p
-            "hi"
-        div .class
-    style attr lang="sass":
-        a
-            color: blue
-    end
