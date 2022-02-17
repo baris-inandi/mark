@@ -1,2 +1,3 @@
 EXTENSION = "mark"
 MODULE_DECLERATION = "// mod"
+MINIFY = False

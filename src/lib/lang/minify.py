@@ -12,3 +12,11 @@ def css(code: str) -> str:
         return rcssmin.cssmin(code)
     except Exception:
         return code
+
+
+def html(code: str) -> str:
+    try:
+        import htmlmin
+        return htmlmin.minify(code, remove_empty_space=True)
+    except Exception as e:
+        return code

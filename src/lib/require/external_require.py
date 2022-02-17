@@ -47,6 +47,6 @@ def external_require(name: str, line_number: int, indent: int) -> Node:
         n.block_inner = innerhtml
         n.indent = indent
     else:
-        throw(f"{name} already imported", docs="require")
+        throw(f"External import {name} already imported", docs="require")
     refs_imported.append(name)  # append to list of already-used
     return n

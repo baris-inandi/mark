@@ -14,6 +14,7 @@ lesscpy = "^0.15.0"
 six = "^1.16.0"
 termcolor = "^1.1.0"
 Markdown = "^3.3.6"
+htmlmin = "^0.1.12"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"

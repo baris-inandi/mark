@@ -103,12 +103,18 @@ def require(line: str, line_number: int) -> Node:
     if ext == "js":
         n = Node("_document", line_number)
         n.indent = indent
-        n.block_inner = f'<script>{minify.js(require_plaintext_file(uri))}</script>'  # noqa
+        out = minify.js(require_plaintext_file(uri))
+        if config.MINIFY:
+            out = minify.js(out)
+        n.block_inner = f'<script>{out}</script>'
         return n
     elif ext == "css":
         n = Node("_document", line_number)
         n.indent = indent
-        n.block_inner = f'<style>{minify.css(require_plaintext_file(uri))}</style>'  # noqa
+        out = minify.css(require_plaintext_file(uri))
+        if config.MINIFY:
+            out = minify.css(out)
+        n.block_inner = f'<style>{out}</style>'
         return n
     elif ext in ["scss", "sass", "less"]:
         n = Node("style", line_number)

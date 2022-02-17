@@ -1,6 +1,7 @@
 from src.lib.lang import minify
 from src.classes.node import Node
 from src.lib.lang import styling
+from src import config
 
 
 def handle_block_node(lines, block_start, index, block_decleration,
@@ -13,7 +14,8 @@ def handle_block_node(lines, block_start, index, block_decleration,
         n.indent = block_name_indentation
         return n
     elif block_decleration.strip().startswith("script"):
-        block_inner = minify.js(block_inner)
+        if config.MINIFY:
+            block_inner = minify.js(block_inner)
     elif block_decleration.strip().startswith("style"):
         # the below line throws an error if the language is not supported
         # no need to validate again
@@ -24,7 +26,8 @@ def handle_block_node(lines, block_start, index, block_decleration,
         if styling_lang in ["sass", "scss", "less"]:
             block_inner = styling.to_css(block_inner, styling_lang)
         else:
-            block_inner = minify.css(block_inner)
+            if config.MINIFY:
+                block_inner = minify.css(block_inner)
     n = Node(block_decleration[:-1], block_start + 1)
     n.block_inner = block_inner
     n.indent = block_name_indentation

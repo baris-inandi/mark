@@ -10,6 +10,28 @@ html
       how Mark can require styles
     */
     require modules/styles.mark
+    require modules/styles.mark
+    require modules/styles.mark
+    require modules/styles.mark
+    require modules/styles.mark
+    require modules/styles.mark
+    require modules/styles.mark
+    require modules/styles.mark
+    require modules/styles.mark
+    require modules/styles.mark
+    require modules/styles.mark
+    require modules/styles.mark
+    require modules/styles.mark
+    require modules/styles.mark
+    require modules/styles.mark
+    require modules/styles.mark
+    require modules/styles.mark
+    require modules/styles.mark
+    require modules/styles.mark
+    require modules/styles.mark
+    require modules/styles.mark
+    require modules/styles.mark
+    require modules/styles.mark
     require modules/external.mark
     // mark can also use external requires.
     // the module above imports tailwindcss
@@ -22,4 +44,11 @@ html
         // import main content using markdown
         require contents/test.md
       // you can also import some js
+      require js/index.js
+      require js/index.js
+      require js/index.js
+      require js/index.js
+      require js/index.js
+      require js/index.js
+      require js/index.js
       require js/index.js

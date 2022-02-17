@@ -1,4 +1,6 @@
 from src.classes.node import Node
+from src.lib.lang import minify
+from src import config
 
 
 class Dom:
@@ -31,4 +33,6 @@ class Dom:
         stack.reverse()
         for close_node in stack:
             out += close_node.closing_tag()
+        if config.MINIFY:
+            return minify.html(out)
         return out

@@ -1,5 +1,6 @@
 from src.lib.error import throw, error_file
 from src.lib.utils import minimal_indentation
+from src import config
 
 
 def get_styling_language(line: str):
@@ -42,7 +43,11 @@ def to_css(code: str, lang: str, filename: str = ""):
             from six import StringIO
             from src.lib.lang import minify
             # lesscpy.compile() does not properly minify, so use minify.css()
-            return minify.css(lesscpy.compile(StringIO(code)))
+            out = lesscpy.compile(StringIO(code))
+            if config.MINIFY:
+                return minify.css(out)
+            else:
+                return out
     except Exception as e:
         throw(
             (f'Cannot compile {lang.upper()}\nPreprocessor Output:\n\n    ' +
