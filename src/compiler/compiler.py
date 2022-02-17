@@ -1,23 +1,28 @@
 from src.compiler.parser.parser import parse
 from src.classes.dom import Dom
-from src.compiler.utils.utils import set_wd
+from src.utils.utils import set_wd
 from src.compiler.parser.read_code_file import read_code_file
 from os import getcwd, chdir
-from os.path import isfile
+from os.path import isfile, basename
 from src.compiler.lang import minify
 from src.compiler.lang.write_html import write_html
 from src import config
-from src.compiler.utils.error import throw
-from termcolor import colored
+from src.utils.error import throw
+from termcolor import colored, cprint
+
+exist_checked = False
 
 
-def compile(f: str):
-    if not isfile(f):
-        f = colored(f, "yellow")
-        throw(f'File not found: "{f}"')
-    if not f.endswith(config.EXTENSION):
-        f = colored(f, "yellow")
-        throw(f'File must end with ".{config.EXTENSION}" extension: "{f}"')
+def compile(f: str, return_as_string=False, time_message=False):
+    global exist_checked
+    if not exist_checked:
+        if not isfile(f):
+            f = colored(f, "yellow")
+            throw(f'File not found: "{f}"')
+        if not f.endswith(config.EXTENSION):
+            f = colored(f, "yellow")
+            throw(f'File must end with ".{config.EXTENSION}" extension: "{f}"')
+        exist_checked = True
     initial_cwd = getcwd()
     lines = read_code_file(f, False)
     set_wd(f)
@@ -27,4 +32,8 @@ def compile(f: str):
     htmlout = dom.to_html()
     if config.MINIFY:
         htmlout = minify.html(htmlout)
-    write_html(htmlout, f"{f[:len(config.EXTENSION)]}.html")
+    if return_as_string:
+        return htmlout
+    if time_message:
+        cprint(f'[Compiled {f}]', "green")
+    write_html(htmlout, f"{basename(f)[:len(config.EXTENSION)]}.html")

@@ -1,5 +1,5 @@
-from src.compiler.utils.error import throw, error_file
-from src.compiler.utils.utils import minimal_indentation
+from src.utils.error import throw, error_file
+from src.utils.utils import minimal_indentation
 from src import config
 
 

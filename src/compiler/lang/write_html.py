@@ -1,4 +1,4 @@
-from src.compiler.utils.utils import newdir
+from src.utils.utils import newdir
 from src import config
 
 

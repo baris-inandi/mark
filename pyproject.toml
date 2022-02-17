@@ -15,7 +15,8 @@ six = "^1.16.0"
 termcolor = "^1.1.0"
 Markdown = "^3.3.6"
 htmlmin = "^0.1.12"
-watchdog = "^2.1.6"
+livereload = "^2.6.3"
+pyinotify = "^0.9.6"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"

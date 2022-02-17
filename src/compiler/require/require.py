@@ -20,7 +20,7 @@
       refer to external_require.py
 """
 
-from src.compiler.utils.error import throw
+from src.utils.error import throw
 from src.classes.node import Node
 from src.compiler.lang import css_preprocessor
 from termcolor import colored

@@ -1,6 +1,6 @@
 from src.compiler.require.require import require
 from src.classes.node import Node
-from src.compiler.utils.utils import indentation_level
+from src.utils.utils import indentation_level
 
 
 def handle_markup(tree: list[Node], line: str, index: int):

@@ -15,6 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Mark.  If not, see <http://www.gnu.org/licenses/>.
 
-from src.compiler.compiler import compile
+from src.dev.watcher import watch
+
 if __name__ == "__main__":
-    compile("test.mark")
+    watch("ignore/test.mark")

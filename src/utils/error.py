@@ -1,5 +1,6 @@
-from src.compiler.utils.utils import minimal_indentation
+from src.utils.utils import minimal_indentation
 from termcolor import cprint, colored
+from src import config
 
 base_uri = "https://example.com"
 docs_urls = {
@@ -59,7 +60,7 @@ def dump_lines(filename: str):
         return
 
 
-def throw(msg, no_exit: bool = False, **kwargs):
+def throw(msg, **kwargs):
     if type(msg) == str:
         complain("error", msg)
     elif type(msg) == list:
@@ -73,5 +74,7 @@ def throw(msg, no_exit: bool = False, **kwargs):
         cprint(base_uri + docs_urls[kwargs["docs"]], attrs=["underline"])
     except KeyError:
         pass
-    if not no_exit:
+    if not config.ERROR_NO_EXIT:
         exit(1)
+    else:
+        raise Exception(msg)

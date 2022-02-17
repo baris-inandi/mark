@@ -1,4 +1,4 @@
-from src.compiler.utils.error import throw
+from src.utils.error import throw
 from src.classes.node import Node
 from collections import defaultdict
 
@@ -21,8 +21,6 @@ refs[
 refs[
     "popper"] = '<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>'  # noqa
 
-refs_imported = []
-
 
 def external_require(name: str, line_number: int, indent: int) -> Node:
     """
@@ -42,11 +40,7 @@ def external_require(name: str, line_number: int, indent: int) -> Node:
     innerhtml = refs[name]
     if innerhtml == "":
         throw(f"Unknown external require: @{name}", docs="require")
-    if name not in refs_imported:
-        n = Node("_document", line_number)
-        n.block_inner = innerhtml
-        n.indent = indent
-    else:
-        throw(f"External import {name} already imported", docs="require")
-    refs_imported.append(name)  # append to list of already-used
+    n = Node("_document", line_number)
+    n.block_inner = innerhtml
+    n.indent = indent
     return n
