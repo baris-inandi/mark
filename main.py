@@ -17,4 +17,4 @@
 
 from src.run import run
 
-run("idea.mark")
+run("example/main.mark")

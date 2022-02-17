@@ -73,7 +73,8 @@ def parse(lines: list[str], filename: str) -> list[Node]:
         #########
         # Nodes #
         #########
-        out = handle_markup(out, line, index)  # handles plaintext and nodes
+        out.append(handle_markup(out, line,
+                                 index))  # handles plaintext and html elements
 
     if block_start != -1:
         throw(["Unclosed block found.", "Use \"end\" to close a block"],

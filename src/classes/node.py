@@ -36,7 +36,7 @@ class Node:
         self.block_inner = ""
 
     def __repr__(self):
-        return f"object Node <{self.tag}/>"
+        return f"<Node {self.tag}>"
 
     def props(self):
         out = self.code.split(" ", 1)[-1]

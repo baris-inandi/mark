@@ -1,0 +1,25 @@
+html
+  head
+    title
+      "require test"
+    // this is a comment
+    require style/style.css
+    /*
+      and this is a multiline comment
+      and this part shows
+      how Mark can require styles
+    */
+    require modules/styles.mark
+    require modules/external.mark
+    // mark can also use external requires.
+    // the module above imports tailwindcss
+  body
+    header
+      h1
+        "Mark Tests: Require Test"
+    main
+      div #main-content
+        // import main content using markdown
+        require contents/test.md
+      // you can also import some js
+      require js/index.js

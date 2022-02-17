@@ -1,9 +1,0 @@
-div #main
-    require modules/test.mark
-    p .red
-    div #style
-        div .hi
-            "ho"
-        "ho"
-        require modules/styles.mark
-    require modules/external.mark

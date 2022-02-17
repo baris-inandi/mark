@@ -8,6 +8,7 @@ html
             "hello second word"
         div .hi
         p .hello
+            "this is text"
         div .hi
             span #ho
                 "hello second word"
