@@ -22,6 +22,10 @@ def set_wd(filepath: str) -> None:
     chdir(path.dirname(path.join(getcwd(), filepath)))
 
 
-def newdir(dirpath: str) -> None:
+def newdir(dirpath: str) -> bool:
     if not path.exists(dirpath):
         mkdir(dirpath)
+        # true if new dir created
+        return True
+    # false if dir already exists
+    return False

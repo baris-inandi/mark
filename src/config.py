@@ -1,3 +1,4 @@
 EXTENSION = "mark"
 MODULE_DECLERATION = "// mod"
 MINIFY = False
+OUTPUT_DIRECTORY = "dist"

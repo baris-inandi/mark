@@ -33,7 +33,8 @@ from src import config
 def require_preprocessor(uri: str, lang: str):
     try:
         with open(uri) as f:
-            return styling.to_css(f.read(), lang, uri)
+            out = styling.to_css(f.read(), lang, uri)
+            return f"<style>{out}\n</style>"
     except FileNotFoundError:
         s = colored(uri, "yellow")
         throw([
@@ -118,6 +119,9 @@ def require(line: str, line_number: int) -> Node:
         return n
     elif ext in ["scss", "sass", "less"]:
         n = Node("_document", line_number)
+        print(require_preprocessor(uri, ext))
+        print(require_preprocessor(uri, ext))
+        print(require_preprocessor(uri, ext))
         n.indent, n.block_inner = indent, require_preprocessor(uri, ext)
         return n
     elif ext in ["html", "htm"]:

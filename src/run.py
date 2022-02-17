@@ -4,6 +4,7 @@ from src.lib.utils import set_wd
 from src.lib.parser.read_code_file import read_code_file
 from os import getcwd, chdir
 from src.lib.lang import minify
+from src.lib.lang.write_html import write_html
 from src import config
 
 
@@ -17,4 +18,4 @@ def run(f: str):
     htmlout = dom.to_html()
     if config.MINIFY:
         htmlout = minify.html(htmlout)
-    print(htmlout)
+    write_html(htmlout, "index.html")
