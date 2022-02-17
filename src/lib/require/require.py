@@ -117,7 +117,7 @@ def require(line: str, line_number: int) -> Node:
         n.block_inner = f'<style>{out}</style>'
         return n
     elif ext in ["scss", "sass", "less"]:
-        n = Node("style", line_number)
+        n = Node("_document", line_number)
         n.indent, n.block_inner = indent, require_preprocessor(uri, ext)
         return n
     elif ext in ["html", "htm"]:

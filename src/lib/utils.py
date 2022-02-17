@@ -1,4 +1,4 @@
-from os import getcwd, path, chdir
+from os import getcwd, path, chdir, mkdir
 
 
 def indentation_level(line: str) -> int:
@@ -20,3 +20,8 @@ def minimal_indentation(lines: list[str]) -> list[str]:
 
 def set_wd(filepath: str) -> None:
     chdir(path.dirname(path.join(getcwd(), filepath)))
+
+
+def newdir(dirpath: str) -> None:
+    if not path.exists(dirpath):
+        mkdir(dirpath)
