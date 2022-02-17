@@ -20,12 +20,12 @@
       refer to external_require.py
 """
 
-from src.lib.error import throw
+from src.compiler.utils.error import throw
 from src.classes.node import Node
-from src.lib.lang import styling
+from src.compiler.lang import css_preprocessor
 from termcolor import colored
-from src.lib.require.external_require import external_require
-from src.lib.lang import minify
+from src.compiler.require.external_require import external_require
+from src.compiler.lang import minify
 from os import getcwd
 from src import config
 
@@ -33,7 +33,7 @@ from src import config
 def require_preprocessor(uri: str, lang: str):
     try:
         with open(uri) as f:
-            out = styling.to_css(f.read(), lang, uri)
+            out = css_preprocessor.to_css(f.read(), lang, uri)
             return f"<style>{out.strip()}</style>"
     except FileNotFoundError:
         s = colored(uri, "yellow")

@@ -1,4 +1,4 @@
-from src.lib.error import throw
+from src.compiler.utils.error import throw
 from termcolor import colored
 
 

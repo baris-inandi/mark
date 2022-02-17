@@ -1,5 +1,5 @@
-from src.lib.parser.remove_comments import remove_comments
-from src.lib.error import throw
+from src.compiler.parser.remove_comments import remove_comments
+from src.compiler.utils.error import throw
 from termcolor import colored
 from src import config
 from os import getcwd

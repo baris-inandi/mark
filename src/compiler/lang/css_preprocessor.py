@@ -1,9 +1,16 @@
-from src.lib.error import throw, error_file
-from src.lib.utils import minimal_indentation
+from src.compiler.utils.error import throw, error_file
+from src.compiler.utils.utils import minimal_indentation
 from src import config
 
 
 def get_styling_language(line: str):
+    # TODO: make this so that it gets a node object,
+    # this implementation relies on the _first line_
+    # of the block decleration which does not let the user
+    # specify the language after an "and" keyword.
+    """
+        gets a line of code, returns the language of the code
+    """
     if "lang='sass'" in line or 'lang="sass"' in line:
         return "sass"
     elif "lang='scss'" in line or 'lang="scss"' in line:
@@ -41,7 +48,7 @@ def to_css(code: str, lang: str, filename: str = ""):
         elif lang == "less":
             import lesscpy
             from six import StringIO
-            from src.lib.lang import minify
+            from src.compiler.lang import minify
             # lesscpy.compile() does not properly minify, so use minify.css()
             out = lesscpy.compile(StringIO(code))
             if config.MINIFY:

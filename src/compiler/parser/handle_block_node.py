@@ -1,6 +1,6 @@
-from src.lib.lang import minify
+from src.compiler.lang import minify
 from src.classes.node import Node
-from src.lib.lang import styling
+from src.compiler.lang import css_preprocessor
 from src import config
 
 
@@ -19,12 +19,12 @@ def handle_block_node(lines, block_start, index, block_decleration,
     elif block_decleration.strip().startswith("style"):
         # the below line throws an error if the language is not supported
         # no need to validate again
-        styling_lang = styling.get_styling_language(block_decleration)
+        styling_lang = css_preprocessor.get_styling_language(block_decleration)
         # sass/scss/less preprocessing
         # styling.to_css() also minifies in the process,
         # so no need for minify.css()
         if styling_lang in ["sass", "scss", "less"]:
-            block_inner = styling.to_css(block_inner, styling_lang)
+            block_inner = css_preprocessor.to_css(block_inner, styling_lang)
         else:
             if config.MINIFY:
                 block_inner = minify.css(block_inner)

@@ -1,9 +1,9 @@
 from src.classes.node import Node
-from src.lib.error import throw, error_file, error_line
-from src.lib.parser.handle_markup import handle_markup
-from src.lib.parser.handle_block_node import handle_block_node
-from src.lib.utils import indentation_level
-from src.lib.parser.read_code_file import read_code_file
+from src.compiler.utils.error import throw, error_file, error_line
+from src.compiler.parser.handle_markup import handle_markup
+from src.compiler.parser.handle_block_node import handle_block_node
+from src.compiler.utils.utils import indentation_level
+from src.compiler.parser.read_code_file import read_code_file
 from src.classes.dom import Dom
 
 
