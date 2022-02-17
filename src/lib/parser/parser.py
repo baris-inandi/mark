@@ -80,7 +80,7 @@ def parse(lines: list[str], filename: str) -> list[Node]:
         throw(["Unclosed block found.", "Use \"end\" to close a block"],
               docs="blocks")
 
-    for i, n in enumerate(out):
+    for n in out:
         if n.tag == "_module":
             module_compiled = Dom(
                 parse(read_code_file(n.block_inner, True),

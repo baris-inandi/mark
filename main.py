@@ -17,4 +17,5 @@
 
 from src.run import run
 
-run("example/main.mark")
+if __name__ == "__main__":
+    run("test.mark")
