@@ -3,7 +3,7 @@ from src.classes.node import Node
 from src.lib.utils import indentation_level
 
 
-def handle_markup(tree: list[Node], line: str, index: int) -> list[Node]:
+def handle_markup(tree: list[Node], line: str, index: int):
     """
         Determines type of line
         Possible Cases:
@@ -24,11 +24,11 @@ def handle_markup(tree: list[Node], line: str, index: int) -> list[Node]:
         n = Node("_plaintext", index + 1)
         n.block_inner = code[1:-1]
         n.indent = indentation_level(line)
-        tree.append(n)
+        new = n
     elif tag == "require":
         # Require statement
-        tree.append(require(line, index + 1))
+        new = require(line, index + 1)
     else:
         # Node
-        tree.append(Node(line, index + 1))
-    return tree
+        new = Node(line, index + 1)
+    return new
