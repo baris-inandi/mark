@@ -1,9 +1,9 @@
 from src.compiler.compiler import compile
 from src.utils.error import throw
 from src import config
-from os.path import dirname
+from os.path import dirname, isfile
+from termcolor import cprint, colored
 import pyinotify
-from termcolor import cprint
 
 f = ""
 
@@ -21,6 +21,14 @@ def on_delete(event):
 
 
 def watch(filename: str):
+    if not isfile(filename):
+        filename = colored(filename, "yellow")
+        throw(f'File not found: "{filename}"')
+    if not filename.endswith(config.EXTENSION):
+        filename = colored(filename, "yellow")
+        throw(
+            f'File must end with ".{config.EXTENSION}" extension: "{filename}"'
+        )
     global f
     f = filename
     config.ERROR_NO_EXIT = True
