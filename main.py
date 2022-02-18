@@ -14,8 +14,13 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Mark.  If not, see <http://www.gnu.org/licenses/>.
-
+"""
 from src.dev.watcher import watch
 
 if __name__ == "__main__":
     watch("ignore/test.mark")
+ """
+
+from src.dev.websocket import start
+
+start("ignore/test.mark")

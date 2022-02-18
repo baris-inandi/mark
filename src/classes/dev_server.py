@@ -2,6 +2,7 @@ from src import config
 from src.compiler.compiler import compile
 from livereload import Server
 from wsgiref.simple_server import make_server
+from os.path import dirname
 
 
 class DevServer():
@@ -23,5 +24,5 @@ class DevServer():
     def serve_live(self):
         config.ERROR_NO_EXIT = True
         server = Server(DevServer)
-        server.watch('test.mark')
+        server.watch(dirname("ignore/test.mark"))
         server.serve(port=3000)

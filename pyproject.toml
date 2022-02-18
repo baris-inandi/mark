@@ -17,6 +17,7 @@ Markdown = "^3.3.6"
 htmlmin = "^0.1.12"
 livereload = "^2.6.3"
 pyinotify = "^0.9.6"
+websockets = "^10.1"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"
