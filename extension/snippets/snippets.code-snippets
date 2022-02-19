@@ -1,0 +1,388 @@
+{
+    "Module decleration": {
+        "prefix": "!mod",
+        "body": ["// mod"],
+        "description": "Module decleration"
+    },
+    "script": {
+        "prefix": ["script", "!script", "js", "!js"],
+        "body": ["script`\n\t$1\n `"],
+        "description": "JavaScript block"
+    },
+    "style.sass": {
+        "prefix": ["sass", "!sass"],
+        "body": ["sass`\n\t$1\n `"],
+        "description": "SASS block"
+    },
+    "style.scss": {
+        "prefix": ["scss", "!scss"],
+        "body": ["scss`\n\t$1\n `"],
+        "description": "SCSS block"
+    },
+    "style.less": {
+        "prefix": ["less", "!less"],
+        "body": ["less`\n\t$1\n `"],
+        "description": "Less block"
+    },
+    "style": {
+        "prefix": ["style", "!style", "css", "!css"],
+        "body": ["style`\n\t$1\n `"],
+        "description": "CSS block"
+    },
+
+    "require": {
+        "prefix": "require",
+        "body": "require",
+        "description": "Mark require keyword"
+    },
+    "and": {
+        "prefix": "and",
+        "body": "and",
+        "description": "Mark keyword \"and\""
+    },
+    "@tailwind": {
+        "prefix": "@tailwind",
+        "body": "@tailwind",
+        "description": "external require @tailwind"
+    },
+    "@bootstrap": {
+        "prefix": "@bootstrap",
+        "body": "@bootstrap",
+        "description": "external require @bootstrap"
+    },
+    "@jquery": {
+        "prefix": "@jquery",
+        "body": "@jquery",
+        "description": "external require @jquery"
+    },
+    "@lodash": {
+        "prefix": "@lodash",
+        "body": "@lodash",
+        "description": "external require @lodash"
+    },
+    "@fontawesome": {
+        "prefix": "@fontawesome",
+        "body": "@fontawesome",
+        "description": "external require @fontawesome"
+    },
+    "@petite-vue": {
+        "prefix": "@petite-vue",
+        "body": "@petite-vue",
+        "description": "external require @petite-vue"
+    },
+    "<a> tag": {
+        "prefix": "a",
+        "body": "a",
+        "description": "an HTML tag"
+    },
+    "<abbr> tag": {
+        "prefix": "abbr",
+        "body": "abbr",
+        "description": "an HTML tag"
+    },
+    "<address> tag": {
+        "prefix": "address",
+        "body": "address",
+        "description": "an HTML tag"
+    },
+    "<article> tag": {
+        "prefix": "article",
+        "body": "article",
+        "description": "an HTML tag"
+    },
+    "<blockquote> tag": {
+        "prefix": "blockquote",
+        "body": "blockquote",
+        "description": "an HTML tag"
+    },
+    "<body> tag": {
+        "prefix": "body",
+        "body": "body",
+        "description": "an HTML tag"
+    },
+    "<br> tag": {
+        "prefix": "br",
+        "body": "br",
+        "description": "an HTML tag"
+    },
+    "<button> tag": {
+        "prefix": "button",
+        "body": "button",
+        "description": "an HTML tag"
+    },
+    "<canvas> tag": {
+        "prefix": "canvas",
+        "body": "canvas",
+        "description": "an HTML tag"
+    },
+    "<caption> tag": {
+        "prefix": "caption",
+        "body": "caption",
+        "description": "an HTML tag"
+    },
+    "<cite> tag": {
+        "prefix": "cite",
+        "body": "cite",
+        "description": "an HTML tag"
+    },
+    "<code> tag": {
+        "prefix": "code",
+        "body": "code",
+        "description": "an HTML tag"
+    },
+    "<div> tag": {
+        "prefix": "div",
+        "body": "div",
+        "description": "an HTML tag"
+    },
+    "<em> tag": {
+        "prefix": "em",
+        "body": "em",
+        "description": "an HTML tag"
+    },
+    "<figure> tag": {
+        "prefix": "figure",
+        "body": "figure",
+        "description": "an HTML tag"
+    },
+    "<footer> tag": {
+        "prefix": "footer",
+        "body": "footer",
+        "description": "an HTML tag"
+    },
+    "<form> tag": {
+        "prefix": "form",
+        "body": "form",
+        "description": "an HTML tag"
+    },
+    "<h1> tag": {
+        "prefix": "h1",
+        "body": "h1",
+        "description": "an HTML tag"
+    },
+    "<h2> tag": {
+        "prefix": "h2",
+        "body": "h2",
+        "description": "an HTML tag"
+    },
+    "<h3> tag": {
+        "prefix": "h3",
+        "body": "h3",
+        "description": "an HTML tag"
+    },
+    "<h4> tag": {
+        "prefix": "h4",
+        "body": "h4",
+        "description": "an HTML tag"
+    },
+    "<h5> tag": {
+        "prefix": "h5",
+        "body": "h5",
+        "description": "an HTML tag"
+    },
+    "<h6> tag": {
+        "prefix": "h6",
+        "body": "h6",
+        "description": "an HTML tag"
+    },
+    "<head> tag": {
+        "prefix": "head",
+        "body": "head",
+        "description": "an HTML tag"
+    },
+    "<header> tag": {
+        "prefix": "header",
+        "body": "header",
+        "description": "an HTML tag"
+    },
+    "<html> tag": {
+        "prefix": "html",
+        "body": "html",
+        "description": "an HTML tag"
+    },
+    "<iframe> tag": {
+        "prefix": "iframe",
+        "body": "iframe",
+        "description": "an HTML tag"
+    },
+    "<img> tag": {
+        "prefix": "img",
+        "body": "img",
+        "description": "an HTML tag"
+    },
+    "<input> tag": {
+        "prefix": "input",
+        "body": "input",
+        "description": "an HTML tag"
+    },
+    "<label> tag": {
+        "prefix": "label",
+        "body": "label",
+        "description": "an HTML tag"
+    },
+    "<legend> tag": {
+        "prefix": "legend",
+        "body": "legend",
+        "description": "an HTML tag"
+    },
+    "<li> tag": {
+        "prefix": "li",
+        "body": "li",
+        "description": "an HTML tag"
+    },
+    "<main> tag": {
+        "prefix": "main",
+        "body": "main",
+        "description": "an HTML tag"
+    },
+    "<meta> tag": {
+        "prefix": "meta",
+        "body": "meta",
+        "description": "an HTML tag"
+    },
+    "<nav> tag": {
+        "prefix": "nav",
+        "body": "nav",
+        "description": "an HTML tag"
+    },
+    "<noscript> tag": {
+        "prefix": "noscript",
+        "body": "noscript",
+        "description": "an HTML tag"
+    },
+    "<object> tag": {
+        "prefix": "object",
+        "body": "object",
+        "description": "an HTML tag"
+    },
+    "<ol> tag": {
+        "prefix": "ol",
+        "body": "ol",
+        "description": "an HTML tag"
+    },
+    "<option> tag": {
+        "prefix": "option",
+        "body": "option",
+        "description": "an HTML tag"
+    },
+    "<output> tag": {
+        "prefix": "output",
+        "body": "output",
+        "description": "an HTML tag"
+    },
+    "<p> tag": {
+        "prefix": "p",
+        "body": "p",
+        "description": "an HTML tag"
+    },
+    "<pre> tag": {
+        "prefix": "pre",
+        "body": "pre",
+        "description": "an HTML tag"
+    },
+    "<progress> tag": {
+        "prefix": "progress",
+        "body": "progress",
+        "description": "an HTML tag"
+    },
+    "<q> tag": {
+        "prefix": "q",
+        "body": "q",
+        "description": "an HTML tag"
+    },
+    "<select> tag": {
+        "prefix": "select",
+        "body": "select",
+        "description": "an HTML tag"
+    },
+    "<source> tag": {
+        "prefix": "source",
+        "body": "source",
+        "description": "an HTML tag"
+    },
+    "<span> tag": {
+        "prefix": "span",
+        "body": "span",
+        "description": "an HTML tag"
+    },
+    "<strong> tag": {
+        "prefix": "strong",
+        "body": "strong",
+        "description": "an HTML tag"
+    },
+    "<sub> tag": {
+        "prefix": "sub",
+        "body": "sub",
+        "description": "an HTML tag"
+    },
+    "<table> tag": {
+        "prefix": "table",
+        "body": "table",
+        "description": "an HTML tag"
+    },
+    "<tbody> tag": {
+        "prefix": "tbody",
+        "body": "tbody",
+        "description": "an HTML tag"
+    },
+    "<td> tag": {
+        "prefix": "td",
+        "body": "td",
+        "description": "an HTML tag"
+    },
+    "<template> tag": {
+        "prefix": "template",
+        "body": "template",
+        "description": "an HTML tag"
+    },
+    "<textarea> tag": {
+        "prefix": "textarea",
+        "body": "textarea",
+        "description": "an HTML tag"
+    },
+    "<th> tag": {
+        "prefix": "th",
+        "body": "th",
+        "description": "an HTML tag"
+    },
+    "<thead> tag": {
+        "prefix": "thead",
+        "body": "thead",
+        "description": "an HTML tag"
+    },
+    "<time> tag": {
+        "prefix": "time",
+        "body": "time",
+        "description": "an HTML tag"
+    },
+    "<title> tag": {
+        "prefix": "title",
+        "body": "title",
+        "description": "an HTML tag"
+    },
+    "<tr> tag": {
+        "prefix": "tr",
+        "body": "tr",
+        "description": "an HTML tag"
+    },
+    "<u> tag": {
+        "prefix": "u",
+        "body": "u",
+        "description": "an HTML tag"
+    },
+    "<ul> tag": {
+        "prefix": "ul",
+        "body": "ul",
+        "description": "an HTML tag"
+    },
+    "<var> tag": {
+        "prefix": "var",
+        "body": "var",
+        "description": "an HTML tag"
+    },
+    "<video> tag": {
+        "prefix": "video",
+        "body": "video",
+        "description": "an HTML tag"
+    }
+}

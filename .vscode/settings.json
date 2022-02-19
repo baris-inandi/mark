@@ -1,3 +1,12 @@
 {
-  "cSpell.words": ["chdir", "getcwd", "jquery", "pyinotify"]
+    "cSpell.words": [
+        "chdir",
+        "getcwd",
+        "iframe",
+        "jquery",
+        "noscript",
+        "pyinotify",
+        "tbody",
+        "thead"
+    ]
 }

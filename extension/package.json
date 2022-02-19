@@ -1,10 +1,10 @@
 {
     "name": "mark",
     "displayName": "Mark Language Support",
-    "description": "Adds Mark syntax highlighting for VS Code",
+    "description": "Mark language support for VS Code",
     "version": "0.0.1",
     "engines": {
-        "vscode": "^1.64.0"
+        "vscode": "^1.40.0"
     },
     "categories": [
         "Programming Languages"
@@ -28,6 +28,12 @@
                 "language": "mark",
                 "scopeName": "source.mark",
                 "path": "./syntaxes/mark.tmLanguage.json"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "mark",
+                "path": "./snippets/snippets.code-snippets"
             }
         ]
     }
