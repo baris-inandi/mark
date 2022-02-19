@@ -1,32 +1,141 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "Mark",
-	"patterns": [
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
-		}
-	],
-	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.mark",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
-		},
-		"strings": {
-			"name": "string.quoted.double.mark",
-			"begin": "\"",
-			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.mark",
-					"match": "\\\\."
-				}
-			]
-		}
-	},
-	"scopeName": "source.mark"
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "Mark",
+    "patterns": [
+        { "include": "#moduleDecleration" },
+        { "include": "#comments" },
+        { "include": "#requires" },
+        { "include": "#externalRequires" },
+        { "include": "#keywords" },
+        { "include": "#stringsDouble" },
+        { "include": "#stringsSingle" },
+        { "include": "#stringsMultiline" },
+        { "include": "#elementID" },
+        { "include": "#elementClass" },
+        { "include": "#tags" }
+    ],
+    "repository": {
+        "comments": {
+            "patterns": [
+                {
+                    "begin": "/\\*\\*(?!/)",
+                    "captures": {
+                        "0": {
+                            "name": "punctuation.definition.comment"
+                        }
+                    },
+                    "end": "\\*/",
+                    "name": "comment.block.documentation"
+                },
+                {
+                    "begin": "/\\*",
+                    "captures": {
+                        "0": {
+                            "name": "punctuation.definition.comment"
+                        }
+                    },
+                    "end": "\\*/",
+                    "name": "comment.block"
+                },
+                {
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.comment"
+                        }
+                    },
+                    "match": "(//).*$\\n?",
+                    "name": "comment.line.double-slash.js"
+                }
+            ]
+        },
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "variable.function",
+                    "match": "\\b(and|attr)\\b"
+                }
+            ]
+        },
+        "stringsDouble": {
+            "name": "string",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        "stringsSingle": {
+            "name": "string",
+            "begin": "'",
+            "end": "'",
+            "patterns": [
+                {
+                    "name": "constant.character.escape",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        "stringsMultiline": {
+            "name": "string",
+            "begin": "`",
+            "end": "`",
+            "patterns": [
+                {
+                    "name": "constant.character.escape",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        "moduleDecleration": {
+            "patterns": [
+                {
+                    "name": "entity.name.namespace",
+                    "match": "^// mod"
+                }
+            ]
+        },
+        "elementID": {
+            "patterns": [
+                {
+                    "name": "keyword.control",
+                    "begin": "\\B\\#",
+                    "end": " "
+                }
+            ]
+        },
+        "elementClass": {
+            "patterns": [
+                {
+                    "name": "entity.name.type",
+                    "begin": "\\B\\.",
+                    "end": " "
+                }
+            ]
+        },
+        "externalRequires": {
+            "patterns": [
+                {
+                    "name": "constant.language.python",
+                    "begin": "\\B\\@",
+                    "end": "\n"
+                }
+            ]
+        },
+        "requires": {
+            "patterns": [
+                {
+                    "name": "support.function",
+                    "match": "\\brequire\\b"
+                }
+            ]
+        },
+        "tags": {
+            "name": "markup.heading",
+            "match": "^\\s*\\b(a|abbr|address|area|article|aside|audio|b|base|bdi|bdo|blockquote|body|br|button|canvas|caption|cite|code|col|colgroup|data|datalist|dd|del|details|dfn|dialog|div|dl|dt|em|embed|fieldset|figure|footer|form|h1|h2|h3|h4|h5|h6|head|header|hgroup|hr|html|i|iframe|img|input|ins|kbd|keygen|label|legend|li|link|main|map|mark|menu|menuitem|meta|meter|nav|noscript|object|ol|optgroup|option|output|p|param|pre|progress|q|rb|rp|rt|rtc|ruby|s|samp|script|section|select|small|source|span|strong|style|sub|summary|sup|table|tbody|td|template|textarea|tfoot|th|thead|time|title|tr|track|u|ul|var|video|wbr)\\b"
+        }
+    },
+    "scopeName": "source.mark"
 }

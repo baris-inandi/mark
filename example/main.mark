@@ -1,25 +1,28 @@
 html
   head
     title
-      "require test"
+      "Require Test"
     // this is a comment
     require style/style.css
     /*
       and this is a multiline comment
-      and this part shows
-      how Mark can require styles
+      this is the second line
     */
     require modules/styles.mark
     require modules/external.mark
-    // mark can also use external requires.
-    // the module above imports tailwindcss
+    require @bootstrap
+    require @jquery
+
   body
     header
       h1
         "Mark Tests: Require Test"
     main
-      div #main-content
+      div .myclass #main-content
         // import main content using markdown
         require contents/test.md
       // you can also import some js
       require js/index.js
+      p .small .text-muted
+      and #explanation
+        "This document is an example for Mark."

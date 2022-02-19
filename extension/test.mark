@@ -1,0 +1,42 @@
+// mod
+// that is a module decleration
+
+html
+  head
+    require @tailwind
+    require @lodash
+    require styles.less
+    
+  body
+    // ids
+    h1 #title-id
+    // classes
+    and .class
+    // attributes
+    and attr foo="bar"
+
+      "This is the title"
+      'This is the title.'
+      // strings
+      "this is a \string"
+
+      `
+        This is a multiline string.
+        Look ma, multiple lines!
+      `
+    
+    // this is a comment
+    // this is another comment
+
+    // require statement
+    require index.js
+
+    /*
+      This is a multiline comment.
+    */
+    
+    // block definitions
+    script`
+      This is the inside of the block
+    `
+  div .bg-red-400 #id
