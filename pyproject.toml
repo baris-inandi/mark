@@ -3,7 +3,7 @@ name = "Mark"
 version = "0.0.0"
 description = "Never write a single line of HTML anymore! A modern markup language for the 21st century"
 authors = ["baris-inandi <68742481+baris-inandi@users.noreply.github.com>"]
-license = "GPLv2"
+license = "GPL-2.0-or-later"
 repository = "https://github.com/baris-inandi/mark"
 documentation = "example.com/docs"
 keywords = [
@@ -13,6 +13,9 @@ keywords = [
 	"Marklang",
 	"Mark-lang",
 	"Mark markup language"
+]
+packages = [
+	{ include = "mark-python" }
 ]
 
 [tool.poetry.dependencies]
