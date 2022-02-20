@@ -24,11 +24,8 @@ def handle_markup(tree: list[Node], line: str, index: int):
         n = Node("_plaintext", index + 1)
         n.block_inner = code[1:-1]
         n.indent = indentation_level(line)
-        new = n
+        return n
     elif tag == "require":
         # Require statement
-        new = require(line, index + 1)
-    else:
-        # Node
-        new = Node(line, index + 1)
-    return new
+        return require(line, index + 1)
+    return Node(line, index + 1)

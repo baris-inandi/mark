@@ -3,30 +3,6 @@ from src.utils.utils import minimal_indentation
 from src import config
 
 
-def get_styling_language(line: str):
-    # TODO: make this so that it gets a node object,
-    # this implementation relies on the _first line_
-    # of the block decleration which does not let the user
-    # specify the language after an "and" keyword.
-    """
-        gets a line of code, returns the language of the code
-    """
-    if "lang='sass'" in line or 'lang="sass"' in line:
-        return "sass"
-    elif "lang='scss'" in line or 'lang="scss"' in line:
-        return "scss"
-    elif "lang='css'" in line or 'lang="css"' in line:
-        return "css"
-    elif "lang='less'" in line or 'lang="less"' in line:
-        return "less"
-    elif "lang='" in line or 'lang="' in line:
-        throw([
-            "Unknown styling language specified in style block.",
-            "Valid languages are: sass, scss, css, less"
-        ],
-              docs="preprocess")
-
-
 def to_css(code: str, lang: str, filename: str = ""):
     indented = lang == "sass"
     if indented and not filename:

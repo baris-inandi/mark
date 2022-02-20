@@ -11,8 +11,8 @@ f = ""
 def on_modify(event):
     try:
         compile(f, time_message=True)
-    except Exception:
-        print("Compilation Error.")
+    except Exception as e:
+        print("Compilation Error.", e)
 
 
 def on_delete(event):
@@ -36,4 +36,5 @@ def watch(filename: str):
     wm.add_watch(dirname(filename), pyinotify.IN_MODIFY, on_modify)
     notifier = pyinotify.Notifier(wm)
     cprint(f"[Watching {filename}]", "blue")
+    on_modify(None)
     notifier.loop()

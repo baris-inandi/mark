@@ -4,6 +4,11 @@
         "body": ["// mod"],
         "description": "Module decleration"
     },
+    "Text Block": {
+        "prefix": ["block", "!block"],
+        "body": ["`\n\t$1\n`"],
+        "description": "Text block"
+    },
     "JavaScript Block": {
         "prefix": ["script", "!script", "js", "!js"],
         "body": ["script`\n\t$1\n`"],

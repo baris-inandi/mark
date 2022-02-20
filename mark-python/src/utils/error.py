@@ -36,7 +36,7 @@ def complain(level: str, msg: str):
 
 def dump_lines(filename: str):
     try:
-        out = ""
+        out = "\n"
         line = err_line
         with open(filename) as f:
             lines = f.readlines()
@@ -50,12 +50,13 @@ def dump_lines(filename: str):
             gutter = " > " if causes_err else "   "
             gutter_seperator = "┃" if causes_err else "│"
             truncated_code = (current[:40] + (current[40:] and '...\n'))
-
             lhs = f"{gutter}{j + 1} {gutter_seperator}"
             if causes_err:
                 lhs = colored(lhs, "white", "on_red")
+            if truncated_code[-1] != "\n":
+                truncated_code += "\n"
             out += (f"{lhs}  {truncated_code}")
-        print("\n", out)
+        print(out)
     except Exception:
         return
 
