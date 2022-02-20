@@ -4,6 +4,16 @@ version = "0.0.0"
 description = "Never write a single line of HTML anymore! A modern markup language for the 21st century"
 authors = ["baris-inandi <68742481+baris-inandi@users.noreply.github.com>"]
 license = "GPLv2"
+repository = "https://github.com/baris-inandi/mark"
+documentation = "example.com/docs"
+keywords = [
+	"Markup",
+	"Markup Language",
+	"HTML",
+	"Marklang",
+	"Mark-lang",
+	"Mark markup language"
+]
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -27,3 +37,6 @@ mypy = "^0.931"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.urls]
+issues = "https://github.com/baris-inandi/mark/issues"
