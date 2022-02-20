@@ -84,7 +84,7 @@ def require(line: str, line_number: int) -> Node:
     split = line.split("attr", 1)
 
     if len(split) > 1:
-        throw("Require doesn't not accept any attributes", docs="require")
+        throw("Require doesn't accept any attributes", docs="require")
 
     lhs = split[0].strip().split(" ")
     if len(lhs) < 2:

@@ -1,4 +1,5 @@
 from src.compiler.require.require import require
+from src.compiler.require.gfont import gfont
 from src.classes.node import Node
 from src.utils.utils import indentation_level
 
@@ -10,6 +11,7 @@ def handle_markup(nodes: list[Node], line: str, index: int):
             - extension statement (and .foo)
             - plaintext element ("foo")
             - node (<div />)
+            - require statement (require foo)
     """
     code = line.strip()
     split_code = code.split(" ", 1)
@@ -28,6 +30,9 @@ def handle_markup(nodes: list[Node], line: str, index: int):
     elif tag == "require":
         # Require statement
         nodes.append(require(line, index + 1))
+    elif tag == "gfont":
+        # Require statement
+        nodes.append(gfont(line, index + 1))
     else:
         # regular node
         nodes.append(Node(line, index + 1))
