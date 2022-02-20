@@ -15,8 +15,5 @@ def css(code: str) -> str:
 
 
 def html(code: str) -> str:
-    try:
-        import htmlmin
-        return htmlmin.minify(code, remove_empty_space=True)
-    except Exception as e:
-        return code
+    # TODO: htmlmin is pretty unreliable
+    return code

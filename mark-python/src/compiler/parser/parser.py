@@ -1,5 +1,5 @@
 from src.classes.node import Node
-from src.utils.error import throw, error_file, error_line
+from src.utils.error import error_file, error_line
 from src.compiler.parser.handle_markup import handle_markup
 from src.compiler.parser.read_code_file import read_code_file
 from src.classes.dom import Dom
@@ -29,28 +29,28 @@ def parse(lines: list[str], filename: str) -> list[Node]:
         #################
         if "`" in line:
             error_line(index + 1)
-            block_node, skip_index = handle_block(index, lines)
+            block_node = handle_block(index, lines)
             out.append(block_node)
-            continue
-
-        ##############
-        # Line Skips #
-        ##############
-        if line.strip() == "":
-            # skip if empty line
             continue
 
         #########
         # Nodes #
         #########
-        out.append(handle_markup(out, line,
-                                 index))  # handles plaintext and html elements
+        lines = handle_markup(out, line,
+                              index)  # handles plaintext and html elements
+
+        ##############
+        # Line Skips #
+        ##############
+        if line.strip() == "":
+            # skip if empty line (and "and" statements)
+            continue
 
     for n in out:
         if n.tag == "_module":
             module_compiled = Dom(
                 parse(read_code_file(n.block_inner, True),
                       n.block_inner)).to_html()
-            n.block_inner, n.tag, n.line = module_compiled, "_document", ""
+            n.block_inner, n.tag, n.line = module_compiled, "_document", index
 
     return out
