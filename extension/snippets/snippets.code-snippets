@@ -26,7 +26,7 @@
     },
     "CSS Block": {
         "prefix": ["style", "!style", "css", "!css"],
-        "body": ["style`\n\t$1\n `"],
+        "body": ["style`\n\t$1\n`"],
         "description": "CSS block"
     },
     "Mark keyword \"require\"": {
