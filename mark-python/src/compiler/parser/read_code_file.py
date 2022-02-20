@@ -6,7 +6,6 @@ from os import getcwd
 
 
 def read_code_file(filename: str, require_module: bool = False):
-    # TODO: does not work at all, for some reason :/
     try:
         with open(filename) as f:
             read_lines = f.readlines()
@@ -19,7 +18,10 @@ def read_code_file(filename: str, require_module: bool = False):
                     "to define a module."
                 ],
                       docs="module")
-            return remove_comments(read_lines).split("\n")
+            code = remove_comments(read_lines)
+            if code.strip() == "":
+                throw(f"File empty: \"{colored(filename, 'yellow')}\"")
+            return code.split("\n")
     except FileNotFoundError:
         s = colored(filename, "yellow")
         throw([f"File not found: {s}", f"in working directory: {getcwd()}"],
