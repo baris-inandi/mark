@@ -6,22 +6,22 @@
     },
     "JavaScript Block": {
         "prefix": ["script", "!script", "js", "!js"],
-        "body": ["script`\n\t$1\n `"],
+        "body": ["script`\n\t$1\n`"],
         "description": "JavaScript block"
     },
     "SASS Stylesheet Block": {
         "prefix": ["sass", "!sass"],
-        "body": ["sass`\n\t$1\n `"],
+        "body": ["sass`\n\t$1\n`"],
         "description": "SASS block"
     },
     "SCSS Stylesheet Block": {
         "prefix": ["scss", "!scss"],
-        "body": ["scss`\n\t$1\n `"],
+        "body": ["scss`\n\t$1\n`"],
         "description": "SCSS block"
     },
     "Less Stylesheet Block": {
         "prefix": ["less", "!less"],
-        "body": ["less`\n\t$1\n `"],
+        "body": ["less`\n\t$1\n`"],
         "description": "Less block"
     },
     "CSS Block": {
