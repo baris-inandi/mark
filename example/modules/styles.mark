@@ -3,7 +3,7 @@ div .styles
     require style/style.less
     require style/style.sass
     require style/style.scss
-    style attr lang="sass":
+    sass`
         a
             background: red
-    end
+    `
