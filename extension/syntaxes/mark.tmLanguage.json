@@ -128,7 +128,7 @@
             "patterns": [
                 {
                     "name": "support.function",
-                    "match": "\\brequire\\b"
+                    "match": "\\b(require|gfont)\\b"
                 }
             ]
         },
