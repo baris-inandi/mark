@@ -7,8 +7,10 @@
         "jquery",
         "noscript",
         "pyinotify",
+        "Roboto",
         "tbody",
         "thead",
-        "Vuepress"
+        "Vuepress",
+        "wght"
     ]
 }

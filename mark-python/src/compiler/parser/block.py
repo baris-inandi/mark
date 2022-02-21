@@ -13,6 +13,7 @@ def handle_block(index: int, lines: list[str]):
     join_char = "\n"
     css_preprocessor_lang = None
     block_tag = None
+    print(lines[index])
     if lines[index].strip().startswith("script`"):
         # will directly be passed to _document Node, no preprocessing
         block_tag = "script"

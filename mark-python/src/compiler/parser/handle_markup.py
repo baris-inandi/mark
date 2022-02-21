@@ -31,7 +31,7 @@ def handle_markup(nodes: list[Node], line: str, index: int):
         # Require statement
         nodes.append(require(line, index + 1))
     elif tag == "gfont":
-        # Require statement
+        # Google fonts
         nodes.append(gfont(line, index + 1))
     else:
         # regular node

@@ -20,7 +20,8 @@
       refer to external_require.py
 """
 
-from src.utils.error import throw
+from src.utils.error import throw, error_line
+from src.utils.utils import indentation_level
 from src.classes.node import Node
 from src.compiler.lang import css_preprocessor
 from termcolor import colored
@@ -79,9 +80,10 @@ def require_markdown(uri: str):
 def require(line: str, line_number: int) -> Node:
 
     # analyze line
-    indent = len(line) - len(line.lstrip())
+    indent = indentation_level(line)
     line = line.strip()
     split = line.split("attr", 1)
+    error_line(line_number)
 
     if len(split) > 1:
         throw("Require doesn't accept any attributes", docs="require")

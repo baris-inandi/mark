@@ -24,6 +24,13 @@ def parse(lines: list[str], filename: str) -> list[Node]:
 
         error_line(index)
 
+        ##############
+        # Line Skips #
+        ##############
+        if line.strip() == "":
+            # skip if empty line
+            continue
+
         #################
         # Handle Blocks #
         #################
@@ -38,13 +45,6 @@ def parse(lines: list[str], filename: str) -> list[Node]:
         #########
         lines = handle_markup(out, line,
                               index)  # handles plaintext and html elements
-
-        ##############
-        # Line Skips #
-        ##############
-        if line.strip() == "":
-            # skip if empty line (and "and" statements)
-            continue
 
     for n in out:
         if n.tag == "_module":
