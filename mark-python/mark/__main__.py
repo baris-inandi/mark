@@ -15,7 +15,6 @@
 # You should have received a copy of the GNU General Public License
 # along with Mark.  If not, see <http://www.gnu.org/licenses/>.
 
-from mark.compiler.compiler import compile
-
+from mark.cli.cli import cli
 if __name__ == "__main__":
-    compile("../ignore/test.mark")
+    cli()

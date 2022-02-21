@@ -12,7 +12,8 @@ def on_modify(event):
     try:
         compile(f, time_message=True)
     except Exception as e:
-        print("Compilation Error.", e)
+        cprint("Compilation Error.", "red")
+        print(e)
 
 
 def on_delete(event):

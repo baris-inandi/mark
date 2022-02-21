@@ -3,7 +3,6 @@ from termcolor import colored
 
 
 class Node:
-
     def __init__(self, code: str, line: int):
         """
             class Node:
@@ -87,7 +86,7 @@ class Node:
                 continue
             if s.startswith("."):
                 # selector is class
-                compiler.classes.add(s)
+                classes.add(s)
             elif s.startswith("#"):
                 # selector is id
                 if not has_an_id:
