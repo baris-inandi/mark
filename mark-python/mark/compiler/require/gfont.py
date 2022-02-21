@@ -1,6 +1,7 @@
 from mark.utils.error import throw, error_line
 from mark.compiler.classes.node import Node
 from mark.utils.utils import indentation_level
+from termcolor import colored
 import urllib.parse
 
 
@@ -20,8 +21,8 @@ def gfont(line: str, line_number: int) -> Node:
     if len(args) != 2:
         throw([
             "gfont should specify a font name",
-            "and a comma-seperated list of required weights.",
-            "Example: gfont Roboto: 300,400,500,700"
+            "and a comma-separated list of desired weights.",
+            f"Example: {colored('gfont Roboto: 300,400,500,700', 'yellow')}"
         ],
               docs="gfont")
 

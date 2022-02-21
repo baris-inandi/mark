@@ -37,12 +37,17 @@
     "Mark keyword \"require\"": {
         "prefix": "require",
         "body": "require",
-        "description": "Mark require keyword"
+        "description": "Mark \"require\" keyword"
+    },
+    "Mark keyword \"gfont\"": {
+        "prefix": "gfont",
+        "body": "gfont",
+        "description": "Mark \"gfont\" keyword"
     },
     "Mark keyword \"and\"": {
         "prefix": "and",
         "body": "and",
-        "description": "Mark keyword \"and\""
+        "description": "Mark \"and\" keyword"
     },
     "External require @tailwind": {
         "prefix": "@tailwind",
