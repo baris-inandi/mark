@@ -30,6 +30,7 @@ Markdown = "^3.3.6"
 htmlmin = "^0.1.12"
 livereload = "^2.6.3"
 pyinotify = "^0.9.6"
+click = "^8.0.4"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"
