@@ -1,4 +1,4 @@
-from src.utils.error import throw
+from utils.error import throw
 from termcolor import colored
 
 
@@ -86,7 +86,7 @@ class Node:
                 continue
             if s.startswith("."):
                 # selector is class
-                classes.add(s)
+                compiler.classes.add(s)
             elif s.startswith("#"):
                 # selector is id
                 if not has_an_id:

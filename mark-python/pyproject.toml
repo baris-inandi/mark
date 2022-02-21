@@ -15,7 +15,7 @@ keywords = [
 	"Mark markup language"
 ]
 packages = [
-	{ include = "mark-python" }
+	{ include = "mark" }
 ]
 
 [tool.poetry.dependencies]
@@ -36,6 +36,8 @@ flake8 = "^4.0.1"
 bandit = "^1.7.2"
 mypy = "^0.931"
 pex = "^2.1.66"
+poetry-setup = "^0.3.6"
+poetry = "^1.1.13"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

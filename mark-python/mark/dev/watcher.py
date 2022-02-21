@@ -1,6 +1,6 @@
-from src.compiler.compiler import compile
-from src.utils.error import throw
-from src import config
+from compiler.compiler import compile
+from utils.error import throw
+from config import config
 from os.path import dirname, isfile
 from termcolor import cprint, colored
 import pyinotify

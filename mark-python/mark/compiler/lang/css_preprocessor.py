@@ -1,6 +1,6 @@
-from src.utils.error import throw, error_file
-from src.utils.utils import minimal_indentation
-from src import config
+from utils.error import throw, error_file
+from utils.utils import minimal_indentation
+from config import config
 
 
 def to_css(code: str, lang: str, filename: str = ""):
@@ -24,7 +24,7 @@ def to_css(code: str, lang: str, filename: str = ""):
         elif lang == "less":
             import lesscpy
             from six import StringIO
-            from src.compiler.lang import minify
+            from compiler.lang import minify
             # lesscpy.compile() does not properly minify, so use minify.css()
             out = lesscpy.compile(StringIO(code))
             if config.MINIFY:

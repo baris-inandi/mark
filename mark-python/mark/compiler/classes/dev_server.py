@@ -1,5 +1,5 @@
-from src import config
-from src.compiler.compiler import compile
+from config import config
+from compiler.compiler import compile
 from livereload import Server
 from wsgiref.simple_server import make_server
 from os.path import dirname

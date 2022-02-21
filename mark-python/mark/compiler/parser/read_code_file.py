@@ -1,7 +1,7 @@
-from src.compiler.parser.remove_comments import remove_comments
-from src.utils.error import throw
+from compiler.parser.remove_comments import remove_comments
+from utils.error import throw
 from termcolor import colored
-from src import config
+from config import config
 from os import getcwd
 
 

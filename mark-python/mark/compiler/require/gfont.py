@@ -1,6 +1,6 @@
-from src.utils.error import throw, error_line
-from src.classes.node import Node
-from src.utils.utils import indentation_level
+from utils.error import throw, error_line
+from compiler.classes.node import Node
+from utils.utils import indentation_level
 import urllib.parse
 
 

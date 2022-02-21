@@ -20,15 +20,15 @@
       refer to external_require.py
 """
 
-from src.utils.error import throw, error_line
-from src.utils.utils import indentation_level
-from src.classes.node import Node
-from src.compiler.lang import css_preprocessor
+from utils.error import throw, error_line
+from utils.utils import indentation_level
+from compiler.classes.node import Node
+from compiler.lang import css_preprocessor
 from termcolor import colored
-from src.compiler.require.external_require import external_require
-from src.compiler.lang import minify
+from compiler.require.external_require import external_require
+from compiler.lang import minify
 from os import getcwd
-from src import config
+from config import config
 
 
 def require_preprocessor(uri: str, lang: str):

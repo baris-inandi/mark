@@ -1,5 +1,5 @@
-from src.utils.utils import newdir
-from src import config
+from utils.utils import newdir
+from config import config
 
 
 def write_html(code: str, filename: str):

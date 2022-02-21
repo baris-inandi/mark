@@ -1,6 +1,6 @@
-from src.utils.utils import minimal_indentation
+from utils.utils import minimal_indentation
 from termcolor import cprint, colored
-from src import config
+from config import config
 
 base_uri = "https://example.com"
 docs_urls = {

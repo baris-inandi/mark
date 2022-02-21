@@ -1,4 +1,4 @@
-from src.classes.node import Node
+from compiler.classes.node import Node
 
 
 class Dom:
