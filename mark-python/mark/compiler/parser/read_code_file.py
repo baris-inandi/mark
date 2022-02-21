@@ -1,7 +1,7 @@
-from compiler.parser.remove_comments import remove_comments
-from utils.error import throw
+from mark.compiler.parser.remove_comments import remove_comments
+from mark.utils.error import throw
 from termcolor import colored
-from config import config
+from mark.config import config
 from os import getcwd
 
 

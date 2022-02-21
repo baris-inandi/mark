@@ -20,15 +20,15 @@
       refer to external_require.py
 """
 
-from utils.error import throw, error_line
-from utils.utils import indentation_level
-from compiler.classes.node import Node
-from compiler.lang import css_preprocessor
+from mark.utils.error import throw, error_line
+from mark.utils.utils import indentation_level
+from mark.compiler.classes.node import Node
+from mark.compiler.lang import css_preprocessor
 from termcolor import colored
-from compiler.require.external_require import external_require
-from compiler.lang import minify
+from mark.compiler.require.external_require import external_require
+from mark.compiler.lang import minify
 from os import getcwd
-from config import config
+from mark.config import config
 
 
 def require_preprocessor(uri: str, lang: str):

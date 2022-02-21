@@ -1,7 +1,7 @@
-from compiler.require.require import require
-from compiler.require.gfont import gfont
-from compiler.classes.node import Node
-from utils.utils import indentation_level
+from mark.compiler.require.require import require
+from mark.compiler.require.gfont import gfont
+from mark.compiler.classes.node import Node
+from mark.utils.utils import indentation_level
 
 
 def handle_markup(nodes: list[Node], line: str, index: int):

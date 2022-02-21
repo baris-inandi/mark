@@ -1,11 +1,12 @@
-from config import config
-from compiler.compiler import compile
+from mark.config import config
+from mark.compiler.compiler import compile
 from livereload import Server
 from wsgiref.simple_server import make_server
 from os.path import dirname
 
 
 class DevServer():
+
     def __init__(self, environment='', response=5500):
         self.dir = config.OUTPUT_DIRECTORY
         self.environment = environment

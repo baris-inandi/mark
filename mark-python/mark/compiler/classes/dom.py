@@ -1,4 +1,4 @@
-from compiler.classes.node import Node
+from mark.compiler.classes.node import Node
 
 
 class Dom:
@@ -6,6 +6,7 @@ class Dom:
         class Dom:
         Represents a list of nodes that can be transpiled to HTML.
     """
+
     def __init__(self, nodes: list[Node]):
         self.nodes = [
             Node("_null", 0),

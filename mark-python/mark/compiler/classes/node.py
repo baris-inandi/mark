@@ -1,8 +1,9 @@
-from utils.error import throw
+from mark.utils.error import throw
 from termcolor import colored
 
 
 class Node:
+
     def __init__(self, code: str, line: int):
         """
             class Node:

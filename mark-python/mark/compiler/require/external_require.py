@@ -1,5 +1,5 @@
-from utils.error import throw
-from compiler.classes.node import Node
+from mark.utils.error import throw
+from mark.compiler.classes.node import Node
 from collections import defaultdict
 
 refs: defaultdict[str, str] = defaultdict(lambda: "")

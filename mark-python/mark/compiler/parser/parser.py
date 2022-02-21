@@ -1,9 +1,9 @@
-from compiler.classes.node import Node
-from utils.error import error_file, error_line
-from compiler.parser.handle_markup import handle_markup
-from compiler.parser.read_code_file import read_code_file
-from compiler.classes.dom import Dom
-from compiler.parser.block import handle_block
+from mark.compiler.classes.node import Node
+from mark.utils.error import error_file, error_line
+from mark.compiler.parser.handle_markup import handle_markup
+from mark.compiler.parser.read_code_file import read_code_file
+from mark.compiler.classes.dom import Dom
+from mark.compiler.parser.block import handle_block
 
 
 def parse(lines: list[str], filename: str) -> list[Node]:

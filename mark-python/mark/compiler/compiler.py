@@ -1,13 +1,13 @@
-from compiler.parser.parser import parse
-from compiler.classes.dom import Dom
-from utils.utils import set_wd
-from compiler.parser.read_code_file import read_code_file
+from mark.compiler.parser.parser import parse
+from mark.compiler.classes.dom import Dom
+from mark.utils.utils import set_wd
+from mark.compiler.parser.read_code_file import read_code_file
 from os import getcwd, chdir
 from os.path import isfile, basename
-from compiler.lang import minify
-from compiler.lang.write_html import write_html
-from config import config
-from utils.error import throw
+from mark.compiler.lang import minify
+from mark.compiler.lang.write_html import write_html
+from mark.config import config
+from mark.utils.error import throw
 from termcolor import colored, cprint
 
 exist_checked = False

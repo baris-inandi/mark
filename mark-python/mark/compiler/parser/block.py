@@ -1,7 +1,7 @@
-from utils.utils import indentation_level, minimal_indentation
-from compiler.lang.css_preprocessor import to_css
-from utils.error import throw
-from compiler.classes.node import Node
+from mark.utils.utils import indentation_level, minimal_indentation
+from mark.compiler.lang.css_preprocessor import to_css
+from mark.utils.error import throw
+from mark.compiler.classes.node import Node
 
 
 def handle_block(index: int, lines: list[str]):
