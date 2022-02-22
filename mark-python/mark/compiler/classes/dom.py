@@ -1,4 +1,6 @@
 from mark.compiler.classes.node import Node
+from mark.utils.error import throw
+from mark.config import config
 
 
 class Dom:
@@ -6,7 +8,6 @@ class Dom:
         class Dom:
         Represents a list of nodes that can be transpiled to HTML.
     """
-
     def __init__(self, nodes: list[Node]):
         self.nodes = [
             Node("_null", 0),
@@ -26,9 +27,17 @@ class Dom:
                 if node.indent < next_node.indent:
                     stack.append(node)
                 elif node.indent > next_node.indent:
-                    parent = stack[-1]
-                    stack.pop()
-                    out += parent.closing_tag()
+                    try:
+                        indent_difference = node.indent - next_node.indent
+                        if indent_difference % config.user["indent"] != 0:
+                            throw("Indentation error")
+                        indent_difference //= config.user["indent"]
+                        for _ in range(indent_difference):
+                            parent = stack[-1]
+                            stack.pop()
+                            out += parent.closing_tag()
+                    except Exception:
+                        throw("Indentation error")
         stack.reverse()
         for close_node in stack:
             out += close_node.closing_tag()

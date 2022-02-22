@@ -1,8 +1,5 @@
 # defaults
-user = {
-    "minify": False,
-    "outputFile": "dist/out.html",
-}
+user = {"minify": False, "outputFile": "dist/out.html", "indent": 2}
 
 EXTENSION = "mark"
 MODULE_DECLERATION = "// mod"

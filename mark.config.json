@@ -1,4 +1,4 @@
 {
-    "minify": true,
-    "outputFile": "index.html"
+    "minify": false,
+    "outputFile": "dist/index.html"
 }

@@ -7,7 +7,7 @@ def write_html(code: str):
     if output_dirname != "":
         makedirs(path.dirname(config.user["outputFile"]), exist_ok=True)
     with open(config.user["outputFile"], "w") as f:
-        new = "" if config.user["minify"] else "\n"
+        n = "" if config.user["minify"] else "\n"
         f.write(
-            f"<!DOCTYPE html><!--- {config.PACKAGE_COMMENT} --->{new}{code}"
+            f"<!DOCTYPE html>{n}<!--- {config.PACKAGE_COMMENT} --->{n}{code}"
         )  # noqa

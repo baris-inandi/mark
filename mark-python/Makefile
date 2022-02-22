@@ -2,7 +2,7 @@ shell:
 	poetry shell
 
 run:
-	python ./mark/__main__.py
+	python ./mark/__main__.py compile ../ignore/main.mark
 
 install:
 	sudo pex . -v -e mark -o /usr/bin/mark
