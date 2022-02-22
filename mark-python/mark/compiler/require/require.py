@@ -109,7 +109,7 @@ def require(line: str, line_number: int) -> Node:
         out = minify.js(require_plaintext_file(uri))
         if config.user["minify"]:
             out = minify.js(out)
-        n.block_inner = f'<script>{out}</script>'
+        n.block_inner = f'<script type="text/javascript">{out}</script>'
         return n
     elif ext == "css":
         n = Node("_document", line_number)
