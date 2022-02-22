@@ -1,4 +1,4 @@
 {
-  "minify": false,
-  "outputFile": "index.html"
+  "minify": true,
+  "outputFile": "dist/mark.html"
 }

@@ -36,4 +36,4 @@ def compile(f: str, return_as_string=False, time_message=False):
         return htmlout
     if time_message:
         cprint(f'[Compiled {f}]', "green")
-    write_html(htmlout, f"{basename(f)[:len(config.EXTENSION)]}.html")
+    write_html(htmlout)

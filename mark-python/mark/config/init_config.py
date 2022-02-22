@@ -8,3 +8,5 @@ def init_config():
         with open("mark.config.json", "w+") as f:
             f.write(json.dumps(config.user, indent=2) + "\n")
         print("Initialized Mark project at", getcwd())
+    else:
+        print("Already a Mark project")

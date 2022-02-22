@@ -1,7 +1,7 @@
 # defaults
 user = {
     "minify": False,
-    "outputFile": "dist/mark.html",
+    "outputFile": "dist/out.html",
 }
 
 EXTENSION = "mark"
