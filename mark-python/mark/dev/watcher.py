@@ -1,7 +1,7 @@
 from mark.compiler.compiler import compile
 from mark.utils.error import throw
 from mark.config import config
-from os.path import dirname, isfile
+from os.path import dirname, isfile, abspath
 from termcolor import cprint, colored
 from time import sleep
 import pyinotify
@@ -10,12 +10,14 @@ f = ""
 
 
 def on_modify(event):
-    try:
-        compile(f, time_message=True)
-        sleep(0.1)
-    except Exception as e:
-        cprint("Compilation Error.", "red")
-        print(e)
+    if not (event is not None and
+            (event.pathname == abspath(config.user["outputFile"]))):
+        try:
+            compile(f, time_message=True)
+        except Exception as e:
+            cprint("Compilation Error.", "red")
+            print(e)
+    sleep(0.1)
 
 
 def on_delete(event):
