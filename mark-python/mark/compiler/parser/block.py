@@ -4,8 +4,8 @@ from mark.utils.error import throw
 from mark.compiler.classes.node import Node
 
 
-def handle_block(index: int, lines: list[str]):
-    # returns a block node and a skipline
+def handle_block(index: int,
+                 lines: list[str]):  # returns a block node and a skipline
     i = index
     in_string = False
     string_inner = ""
@@ -13,7 +13,6 @@ def handle_block(index: int, lines: list[str]):
     join_char = "\n"
     css_preprocessor_lang = None
     block_tag = None
-    print(lines[index])
     if lines[index].strip().startswith("script`"):
         # will directly be passed to _document Node, no preprocessing
         block_tag = "script"

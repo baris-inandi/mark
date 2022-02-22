@@ -36,15 +36,15 @@ def parse(lines: list[str], filename: str) -> list[Node]:
         #################
         if "`" in line:
             error_line(index + 1)
-            block_node = handle_block(index, lines)
+            block_node, skip_index = handle_block(index, lines)
             out.append(block_node)
             continue
 
         #########
         # Nodes #
         #########
-        lines = handle_markup(out, line,
-                              index)  # handles plaintext and html elements
+        out = handle_markup(out, line,
+                            index)  # handles plaintext and html elements
 
     for n in out:
         if n.tag == "_module":
