@@ -107,7 +107,7 @@ def require(line: str, line_number: int) -> Node:
         n = Node("_document", line_number)
         n.indent = indent
         out = minify.js(require_plaintext_file(uri))
-        if config.MINIFY:
+        if config.user["minify"]:
             out = minify.js(out)
         n.block_inner = f'<script>{out}</script>'
         return n
@@ -115,7 +115,7 @@ def require(line: str, line_number: int) -> Node:
         n = Node("_document", line_number)
         n.indent = indent
         out = minify.css(require_plaintext_file(uri))
-        if config.MINIFY:
+        if config.user["minify"]:
             out = minify.css(out)
         n.block_inner = f'<style>{out}</style>'
         return n

@@ -6,9 +6,8 @@ from os.path import dirname
 
 
 class DevServer():
-
     def __init__(self, environment='', response=5500):
-        self.dir = config.OUTPUT_DIRECTORY
+        self.dir = config.user["outputFile"]
         self.environment = environment
         self.response = response
 

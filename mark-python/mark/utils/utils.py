@@ -23,6 +23,7 @@ def set_wd(filepath: str) -> None:
 
 
 def newdir(dirpath: str) -> bool:
+    dirpath = path.dirname(path.abspath(dirpath))
     if not path.exists(dirpath):
         mkdir(dirpath)
         # true if new dir created

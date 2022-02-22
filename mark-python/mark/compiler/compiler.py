@@ -30,7 +30,7 @@ def compile(f: str, return_as_string=False, time_message=False):
     chdir(initial_cwd)
     dom = Dom(nodes)
     htmlout = dom.to_html()
-    if config.MINIFY:
+    if config.user["minify"]:
         htmlout = minify.html(htmlout)
     if return_as_string:
         return htmlout

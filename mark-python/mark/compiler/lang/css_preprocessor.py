@@ -27,7 +27,7 @@ def to_css(code: str, lang: str, filename: str = ""):
             from mark.compiler.lang import minify
             # lesscpy.compile() does not properly minify, so use minify.css()
             out = lesscpy.compile(StringIO(code))
-            if config.MINIFY:
+            if config.user["minify"]:
                 return minify.css(out)
             else:
                 return out
