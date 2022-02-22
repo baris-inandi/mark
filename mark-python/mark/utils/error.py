@@ -8,7 +8,8 @@ docs_urls = {
     "blocks": "/blocks",
     "selectors": "/selectors",
     "preprocess": "/styling/preprocessors",
-    "module": "/modules"
+    "module": "/modules",
+    "config": "/config",
 }
 
 err_file = "<unknown>"

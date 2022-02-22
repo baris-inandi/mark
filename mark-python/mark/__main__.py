@@ -16,8 +16,6 @@
 # along with Mark.  If not, see <http://www.gnu.org/licenses/>.
 
 from mark.cli.cli import cli
-from mark.config.load_config import load_config
 
 if __name__ == "__main__":
-    load_config()
     cli()

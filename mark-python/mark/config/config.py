@@ -1,3 +1,4 @@
+# defaults
 user = {
     "minify": False,
     "outputFile": "dist/mark.html",
