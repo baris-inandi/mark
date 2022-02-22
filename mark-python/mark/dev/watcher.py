@@ -3,6 +3,7 @@ from mark.utils.error import throw
 from mark.config import config
 from os.path import dirname, isfile
 from termcolor import cprint, colored
+from time import sleep
 import pyinotify
 
 f = ""
@@ -11,6 +12,7 @@ f = ""
 def on_modify(event):
     try:
         compile(f, time_message=True)
+        sleep(0.1)
     except Exception as e:
         cprint("Compilation Error.", "red")
         print(e)

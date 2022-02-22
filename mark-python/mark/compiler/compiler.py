@@ -3,7 +3,7 @@ from mark.compiler.classes.dom import Dom
 from mark.utils.utils import set_wd
 from mark.compiler.parser.read_code_file import read_code_file
 from os import getcwd, chdir
-from os.path import isfile, basename
+from os.path import isfile
 from mark.compiler.lang import minify
 from mark.compiler.lang.write_html import write_html
 from mark.config import config
@@ -11,10 +11,12 @@ from mark.utils.error import throw
 from termcolor import colored, cprint
 
 exist_checked = False
+count = 0
 
 
 def compile(f: str, return_as_string=False, time_message=False):
     global exist_checked
+    global count
     if not exist_checked:
         if not isfile(f):
             f = colored(f, "yellow")
@@ -35,5 +37,6 @@ def compile(f: str, return_as_string=False, time_message=False):
     if return_as_string:
         return htmlout
     if time_message:
-        cprint(f'[Compiled {f}]', "green")
+        count += 1
+        cprint(f'Compiled {f} ({count})', "green")
     write_html(htmlout)
