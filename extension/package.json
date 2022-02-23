@@ -2,7 +2,9 @@
     "name": "mark",
     "displayName": "Mark Language Support",
     "description": "Mark language support for VS Code",
-    "version": "0.0.1",
+    "version": "1.0.0",
+    "repository": "https://github.com/baris-inandi/mark",
+    "publisher": "baris-inandi",
     "engines": {
         "vscode": "^1.40.0"
     },

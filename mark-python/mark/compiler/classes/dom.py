@@ -25,6 +25,9 @@ class Dom:
                 if node.indent >= next_node.indent:
                     out += node.closing_tag()
                 if node.indent < next_node.indent:
+                    indent_difference = next_node.indent - node.indent
+                    if indent_difference % config.user["indent"] != 0:
+                        throw("Indentation error")
                     stack.append(node)
                 elif node.indent > next_node.indent:
                     try:

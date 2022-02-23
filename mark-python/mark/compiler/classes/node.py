@@ -23,7 +23,7 @@ class Node:
         """
 
         # The HTML tag of the Node Eg. "div"
-        self.tag = code.split(" ", 1)[0].lower()
+        self.tag = code.split()[0].lower()
         # Line number of the Node
         self.line = line
         # The input code of the Node Eg. "    div {...}"
