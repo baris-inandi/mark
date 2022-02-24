@@ -7,7 +7,7 @@ from os import path
 def load_config():
     existent = False
     for dir in range(20):
-        config_file = ("../" * dir) + "mark.config.json"
+        config_file = ("../" * dir) + "markrc.json"
         if path.exists(config_file):
             with open(config_file, "r") as f:
                 loaded_config = json.load(f)

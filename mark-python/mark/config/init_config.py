@@ -4,8 +4,8 @@ from os import getcwd, path
 
 
 def init_config():
-    if not path.exists("mark.config.json"):
-        with open("mark.config.json", "w+") as f:
+    if not path.exists("markrc.json"):
+        with open("markrc.json", "w+") as f:
             f.write(json.dumps(config.user, indent=2) + "\n")
         print("Initialized Mark project at", getcwd())
     else:

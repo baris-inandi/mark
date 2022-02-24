@@ -1,0 +1,13 @@
+[package]
+name = "mark"
+version = "0.0.1"
+edition = "2021"
+default-run = "mark"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+[[bin]]
+name = "mark-rust"
+path = "main.rs"
