@@ -18,13 +18,16 @@ pub struct Node {
 
 impl Node {
     pub fn new(code: String) -> Self {
-        Node {
-            code: code.clone(),
-            tag: code.split_whitespace().collect(),
+        let node_tag: Vec<String> = code.split_whitespace().map(str::to_string).collect();
+        println!("{:?}", node_tag[0]);
+        let mut new_node = Node {
+            code,
+            tag: node_tag[0].clone(),
             line_number: 0,
             indent: 0,
-            attrs: "".to_string(),
-            inner: "".to_string(),
-        }
+            attrs: String::new(),
+            inner: String::new(),
+        };
+        return new_node;
     }
 }
