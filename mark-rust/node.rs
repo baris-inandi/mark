@@ -21,9 +21,8 @@ impl Node {
         // example `code` param:
         // "div .class #id attr x='y'"
         Node {
-            code: code,
-            tag: code.split_whitespace().to_string(),
-            // TODO: above line errors out
+            code: code.clone(),
+            tag: code.split_whitespace().collect(),
             line_number: 0,
             indent: 0,
             attrs: "".to_string(),
@@ -35,6 +34,11 @@ impl Node {
 fn main() {
     let n = Node::new("hello".to_string());
     println!("{}", n.tag);
+    println!("{}", n.code);
+    println!("{}", n.line_number);
+    println!("{}", n.indent);
+    println!("{}", n.attrs);
+    println!("{}", n.inner);
 }
 
 //let mut split = "some string 123 ffd".split("123");
