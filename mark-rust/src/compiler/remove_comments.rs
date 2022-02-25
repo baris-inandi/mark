@@ -1,4 +1,3 @@
-// remove // and /* */ comments from string
 pub fn remove_comments(code: String) -> String {
     let mut new_code = String::new();
     let mut in_comment = false;
@@ -45,6 +44,10 @@ pub fn remove_comments(code: String) -> String {
                         in_comment = false;
                     }
                 }
+                continue;
+            }
+            if in_multiline || in_oneline || in_comment {
+                new_line.push(char);
                 continue;
             }
             if !in_comment {
