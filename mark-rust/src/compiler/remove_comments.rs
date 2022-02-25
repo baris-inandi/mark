@@ -1,8 +1,12 @@
 // remove // and /* */ comments from string
 pub fn remove_comments(code: String) -> String {
     let mut new_code = String::new();
-    let (mut in_comment, mut in_oneline, mut in_multiline) = (false, false, false);
-    let (mut in_double_quote, mut in_single_quote, mut in_block) = (false, false, false);
+    let mut in_comment = false;
+    let mut in_oneline = false;
+    let mut in_multiline = false;
+    let mut in_double_quote = false;
+    let mut in_single_quote = false;
+    let mut in_block = false;
     for line in code.lines() {
         let mut new_line = String::new();
         for (index, char) in line.chars().enumerate() {
@@ -19,14 +23,17 @@ pub fn remove_comments(code: String) -> String {
             if char == '/' && index < line.len() && !in_comment {
                 let next_char = line.chars().nth(index + 1).unwrap();
                 if next_char == '/' {
-                    (in_oneline, in_comment) = (true, true);
+                    in_oneline = true;
+                    in_comment = true;
                 } else if next_char == '*' {
-                    (in_multiline, in_comment) = (true, true);
+                    in_multiline = true;
+                    in_comment = true;
                 }
             }
             if in_oneline {
                 if char == '\n' {
-                    (in_oneline, in_comment) = (false, false);
+                    in_oneline = false;
+                    in_comment = false;
                 }
                 continue;
             }
@@ -34,7 +41,8 @@ pub fn remove_comments(code: String) -> String {
                 if char == '*' && index < line.len() {
                     let next_char = line.chars().nth(index + 1).unwrap();
                     if next_char == '/' {
-                        (in_multiline, in_comment) = (false, false);
+                        in_multiline = false;
+                        in_comment = false;
                     }
                 }
                 continue;
