@@ -1,3 +1,15 @@
-html
+html // comment
+// TODO: remove_comments.rs panics.
+/*
+Multiline
+ */
   body
     "hi"
+
+    h1
+      `
+        Multiline string
+      `
+    p
+      'a'
+      "b"

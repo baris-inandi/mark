@@ -16,9 +16,6 @@ pub fn remove_comments(code: String) -> String {
             } else if char == '`' && !(in_double_quote && in_single_quote) {
                 in_block = !in_block;
             }
-            if in_block || in_double_quote || in_single_quote {
-                continue;
-            }
             if char == '/' && index < line.len() && !in_comment {
                 let next_char = line.chars().nth(index + 1).unwrap();
                 if next_char == '/' {
@@ -34,7 +31,6 @@ pub fn remove_comments(code: String) -> String {
                     in_oneline = false;
                     in_comment = false;
                 }
-                continue;
             }
             if in_multiline {
                 if char == '*' && index < line.len() {
@@ -44,11 +40,6 @@ pub fn remove_comments(code: String) -> String {
                         in_comment = false;
                     }
                 }
-                continue;
-            }
-            if in_multiline || in_oneline || in_comment {
-                new_line.push(char);
-                continue;
             }
             if !in_comment {
                 new_line.push(char);
