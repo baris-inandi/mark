@@ -58,7 +58,7 @@ pub fn remove_comments(code: String) -> String {
             let next_char = code.chars().nth(index + 1).unwrap();
             if next_char == '/' {
                 // skip the next two chars since they will certainly be "*/"
-                skip_buffer += 2;
+                skip_buffer += 1;
                 // terminate multiline comment
                 comment_multiline = false;
                 // avoid appending next char
