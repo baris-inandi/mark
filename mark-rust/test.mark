@@ -8,7 +8,7 @@ html // comment
 
 */
   body
-    "hi"
+    "hi\nhi
 
     h1
       `

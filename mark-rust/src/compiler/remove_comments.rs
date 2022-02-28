@@ -41,6 +41,18 @@ pub fn remove_comments(code: String) -> String {
             skip_buffer -= 1;
             continue;
         }
+        if c == '\n' {
+            /*
+                newline is special in this case,
+                it terminates every oneline comment
+                and to preserve line numbers,
+                \n should always be pushed unconditionally.
+            */
+            // TODO: if oneline string is used in multiple lines, error out.
+            new_code.push(c);
+            comment_oneline = false;
+            continue;
+        }
         string_context.update(c);
         if c == '/' && !string_context.in_string() {
             let next_char = code.chars().nth(index + 1).unwrap();
@@ -65,7 +77,7 @@ pub fn remove_comments(code: String) -> String {
                 continue;
             }
         }
-        if (!comment_oneline && !comment_multiline) || c == '\n' {
+        if !comment_oneline && !comment_multiline {
             new_code.push(c);
         }
     }
