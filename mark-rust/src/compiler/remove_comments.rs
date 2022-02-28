@@ -33,38 +33,41 @@ pub fn remove_comments(code: String) -> String {
     // chars inside mark strings (", ', and `) are ignored.
     let mut comment_oneline = false; // // ...
     let mut comment_multiline = false; // /* ... */
-    let mut new_code: Vec<String> = Vec::new();
+    let mut new_code = String::new();
     let mut string_context = MarkStringContext::new();
-    for line in code.lines() {
-        for (index, c) in line.chars().enumerate() {
-            string_context.update(c);
-            let mut l = line.to_owned();
-            l.push(' ');
-            let mut new_line = String::new();
-            if c == '/' && !string_context.in_string() {
-                let next_char = l.chars().nth(index + 1).unwrap();
-                if next_char == '/' {
-                    // oneline comment opening
-                    comment_oneline = true;
-                } else if next_char == '*' {
-                    // multiline comment opening
-                    comment_multiline = true;
-                }
-            } else if c == '\n' {
-                // terminate oneline comment
-                comment_oneline = false;
-            } else if c == '*' && !string_context.in_string() {
-                let next_char = l.chars().nth(index + 1).unwrap();
-                if next_char == '/' {
-                    // terminate multiline comment
-                    comment_multiline = false;
-                }
+    let mut skip_buffer: u8 = 0;
+    for (index, c) in code.chars().enumerate() {
+        if skip_buffer > 0 {
+            skip_buffer -= 1;
+            continue;
+        }
+        string_context.update(c);
+        if c == '/' && !string_context.in_string() {
+            let next_char = code.chars().nth(index + 1).unwrap();
+            if next_char == '/' {
+                // oneline comment opening
+                comment_oneline = true;
+            } else if next_char == '*' {
+                // multiline comment opening
+                comment_multiline = true;
             }
-            if !comment_oneline && !comment_multiline {
-                new_line.push(c);
+        } else if c == '\n' {
+            // terminate oneline comment
+            comment_oneline = false;
+        } else if c == '*' && !string_context.in_string() {
+            let next_char = code.chars().nth(index + 1).unwrap();
+            if next_char == '/' {
+                // skip the next two chars since they will certainly be "*/"
+                skip_buffer += 2;
+                // terminate multiline comment
+                comment_multiline = false;
+                // avoid appending next char
+                continue;
             }
-            new_code.push(new_line);
+        }
+        if (!comment_oneline && !comment_multiline) || c == '\n' {
+            new_code.push(c);
         }
     }
-    return new_code.join("");
+    return new_code;
 }
