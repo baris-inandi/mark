@@ -20,7 +20,7 @@ impl Node {
     pub fn new(code: String) -> Self {
         let node_tag: Vec<String> = code.split_whitespace().map(str::to_string).collect();
         println!("{:?}", node_tag[0]);
-        let mut new_node = Node {
+        let new_node = Node {
             code,
             tag: node_tag[0].clone(),
             line_number: 0,

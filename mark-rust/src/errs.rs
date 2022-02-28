@@ -1,3 +1,4 @@
-pub fn throw(msg: &str) {
-    panic!(msg);
+pub fn throw(msg: &str) -> &str {
+    println!("{}", msg);
+    return msg;
 }
