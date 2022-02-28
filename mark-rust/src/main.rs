@@ -1,4 +1,3 @@
-// use std::fs;
 mod compiler;
 
 fn main() {
