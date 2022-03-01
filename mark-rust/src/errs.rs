@@ -1,4 +1,4 @@
-pub fn throw(msg: &str) -> &str {
-    println!("{}", msg);
-    return msg;
+pub fn throw(msg: &str) -> String {
+    println!("ERROR: {}", msg);
+    return String::from(msg);
 }
