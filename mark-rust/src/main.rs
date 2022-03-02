@@ -1,6 +1,5 @@
 mod compiler;
 pub mod errs;
-pub mod node;
 pub mod utils;
 
 fn main() {

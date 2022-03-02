@@ -1,4 +1,4 @@
-pub struct Node {
+pub struct MarkNode {
     // source code for the node
     pub code: String,
     // HTML tag of node (Eg. div, span, p, etc.)
@@ -16,11 +16,10 @@ pub struct Node {
     pub inner: String,
 }
 
-impl Node {
+impl MarkNode {
     pub fn new(code: String) -> Self {
         let node_tag: Vec<String> = code.split_whitespace().map(str::to_string).collect();
-        println!("{:?}", node_tag[0]);
-        let new_node = Node {
+        let new_node = MarkNode {
             code,
             tag: node_tag[0].clone(),
             line_number: 0,

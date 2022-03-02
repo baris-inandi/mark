@@ -1,14 +1,13 @@
 use std::fs;
+mod node;
+mod parse_lines;
 mod remove_comments;
 
 pub fn compile(filename: String) {
-    let f = match fs::read_to_string(filename) {
-        Ok(file) => file,
+    let f = match fs::read_to_string(&filename) {
+        Ok(f) => f,
         Err(_) => crate::errs::throw("Could not read file, does it exist?"),
     };
     let contents = remove_comments::remove_comments(f);
-    let content_lines = contents.lines();
-    for (_, line) in content_lines.enumerate() {
-        println!("{}", line);
-    }
+    parse_lines::parse_lines(contents, filename);
 }
