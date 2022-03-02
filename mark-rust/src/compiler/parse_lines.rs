@@ -1,13 +1,13 @@
 struct MarkVirtualDOM {
     nodes: Vec<super::node::MarkNode>,
-    module: String,
+    _module: String,
 }
 
 impl MarkVirtualDOM {
     fn new(module: String) -> MarkVirtualDOM {
         MarkVirtualDOM {
             nodes: Vec::new(),
-            module: module,
+            _module: module,
         }
     }
     fn new_node(&mut self, line: String) {
