@@ -1,6 +1,8 @@
 use std::fs;
+mod block;
 mod node;
 mod parse_lines;
+mod preprocess;
 mod remove_comments;
 
 pub fn compile(filename: String) {

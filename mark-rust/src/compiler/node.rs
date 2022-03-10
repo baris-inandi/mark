@@ -2,15 +2,15 @@ use std::fmt::Display;
 
 pub struct Node {
     // source code for the node
-    pub code: String,
+    pub code: &mut String,
     // HTML tag of node (Eg. div, span, p, etc.)
-    pub tag: String,
+    pub tag: &mut String,
     // The source code line number of the node
     pub line_number: usize,
     // the indentation level of node.
     pub indent: usize,
     // a string of attributes of node.
-    pub attrs: String,
+    pub attrs: &mut String,
     // the HTML of any _document Node
     // used only if the node is already in
     // HTML format.
