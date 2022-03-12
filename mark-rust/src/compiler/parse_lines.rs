@@ -30,5 +30,8 @@ pub fn parse_lines(code: String) {
             dom.push(Node::new(line));
         }
     }
-    println!("{}", Node::new("      div .hi attr x='y'").attributes());
+    println!(
+        "{}",
+        Node::new("      div .hi #id .ho .hu attr x='y'").attributes()
+    );
 }
