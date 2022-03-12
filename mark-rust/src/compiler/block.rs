@@ -1,26 +1,34 @@
 use super::node::Node;
 use super::preprocess::preprocess;
 
-fn plaintext_block(block: String) -> Node {
-    let n = Node::new(block.as_str());
-    n.tag = String::from("_document");
-    n.inner = block;
-    return n;
-}
-
-pub fn block(trimmed_code: String) -> Node {
+pub fn block(line: &str, trimmed_line: String, code: String, block_idx: usize) -> (Node, usize) {
     /*
         Handles blocks. Eg. script`console.log("hi")`
         Handlers are defined in the hashmap below.
         All block strings are passed to the corresponding handler
         and a _document node is returned.
     */
-    let block_split: Vec<&str> = trimmed_code.split("`").collect();
-    println!("{}", block_split.len());
+    let code_after_block_vector = code.lines().collect::<Vec<&str>>();
+    let code_after_block = code_after_block_vector[block_idx..].join("\n");
+    let mut block_inner = String::new();
+    let mut opening_backtick_found = false;
+    let block_split: Vec<&str> = trimmed_line.split("`").collect();
     let block_annotation = block_split[0];
-    // JavaScript, CSS, HTML, and plaintext should always be handled as plaintext
-    if vec!["script", "style", "html", ""].contains(&block_annotation) {
-        return plaintext_block(trimmed_code);
+    let mut skip_lines: usize = 0;
+    for line in code_after_block.lines() {
+        if line.contains("`") && opening_backtick_found {
+            break;
+        }
+        block_inner += line;
+        block_inner += "\n";
+        skip_lines += 1;
+        opening_backtick_found = true;
     }
-    return preprocess(String::from(&trimmed_code), String::from(block_annotation));
+    block_inner = block_inner.trim().to_string();
+    block_inner.replace_range(0..block_annotation.len() + 1, "");
+
+    return (
+        preprocess(line, block_inner, String::from(block_annotation)),
+        skip_lines,
+    );
 }

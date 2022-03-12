@@ -1,3 +1,11 @@
+/*
+    class Node:
+    represents a single HTML element Eg. <div>
+
+    special nodes:
+        _document -> represents a plaintext node. Should always be valid HTML.
+*/
+
 use std::fmt::Display;
 
 pub struct Node {
@@ -5,8 +13,6 @@ pub struct Node {
     pub code: String,
     // HTML tag of node (Eg. div, span, p, etc.)
     pub tag: String,
-    // The source code line number of the node
-    pub line_number: usize,
     // the indentation level of node.
     pub indent: usize,
     // the HTML of any _document Node
@@ -35,11 +41,7 @@ fn rm_first_last(value: &str) -> &str {
 impl Display for Node {
     fn fmt(&self, fmt: &mut std::fmt::Formatter) -> std::result::Result<(), std::fmt::Error> {
         let inner = if self.inner.len() > 0 { "[...]" } else { "" };
-        write!(
-            fmt,
-            "[{}:{}] <{}> {}",
-            self.line_number, self.indent, self.tag, inner
-        )
+        write!(fmt, "[{}] <{}> {}", self.indent, self.tag, inner)
     }
 }
 
@@ -58,19 +60,32 @@ impl Node {
         return Node {
             code: String::from(code),
             tag,
-            line_number: 0,
             indent: crate::utils::get_indent_level(String::from(code)),
             inner: String::from(inner),
         };
     }
-    pub fn chain(&self, add_code: String) -> Self {
+    pub fn chain(&self, add_code: &str) -> Self {
         /*
             the chain method allows us to concatenate another
             piece of code to a node, allowing the usage of Mark's
             "and" statement.
         */
-        let code = add_code.trim();
-        // TODO: remove "and" here
+        let mut code = String::from(add_code.trim());
+        code.replace_range(0..3, "");
         return Node::new(&(self.code.clone() + &code));
+    }
+    pub fn document(code: &str, inner: &str) -> Self {
+        /*
+            Similar to the new() implementation,
+            but specific to document nodes.
+            Typically used for plaintext, JavaScript,
+            CSS, and HTML.
+        */
+        return Node {
+            code: String::new(),
+            tag: String::from("_document"),
+            indent: crate::utils::get_indent_level(String::from(code)),
+            inner: String::from(inner),
+        };
     }
 }

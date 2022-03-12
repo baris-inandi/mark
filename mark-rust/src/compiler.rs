@@ -1,4 +1,5 @@
 use std::fs;
+mod attributes;
 mod block;
 mod node;
 mod parse_lines;

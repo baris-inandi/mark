@@ -1,31 +1,49 @@
 use super::node::Node;
 
-fn sass(code: String) -> Node {
-    return Node::new(&code);
+/*
+    Requires no compilation step
+*/
+
+fn wrap_style(code: String) -> String {
+    return format!("<s>{}</style>", code);
 }
 
-fn scss(code: String) -> Node {
-    return Node::new(&code);
+fn wrap_script(code: String) -> String {
+    return format!("<script>{}</script>", code);
 }
 
-fn markdown(code: String) -> Node {
-    return Node::new(&code);
+/*
+    Requires compilation step
+*/
+
+fn sass(code: String) -> String {
+    return wrap_style(code);
 }
 
-fn less(code: String) -> Node {
-    return Node::new(&code);
+fn scss(code: String) -> String {
+    return wrap_style(code);
 }
 
-pub fn preprocess(code: String, processor: String) -> Node {
-    if processor == "sass" {
-        return sass(code);
+fn markdown(code: String) -> String {
+    return code;
+}
+
+pub fn preprocess(line: &str, code: String, processor: String) -> Node {
+    // JavaScript, CSS, HTML, and plaintext should always be handled as plaintext
+    let inner;
+    if processor == "script" {
+        inner = wrap_script(code);
+    } else if processor == "style" {
+        inner = wrap_style(code);
+    } else if processor == "sass" {
+        inner = sass(code);
     } else if processor == "scss" {
-        return scss(code);
+        inner = scss(code);
     } else if processor == "md" {
-        return markdown(code);
-    } else if processor == "less" {
-        return less(code);
+        inner = markdown(code);
     } else {
-        return Node::new(&code);
+        inner = String::new();
+        crate::errs::throw("Unknown block annotation");
     }
+    return Node::document(line, inner.as_str());
 }
