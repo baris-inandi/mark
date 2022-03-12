@@ -2,15 +2,13 @@ use std::fmt::Display;
 
 pub struct Node {
     // source code for the node
-    pub code: &mut String,
+    pub code: String,
     // HTML tag of node (Eg. div, span, p, etc.)
-    pub tag: &mut String,
+    pub tag: String,
     // The source code line number of the node
     pub line_number: usize,
     // the indentation level of node.
     pub indent: usize,
-    // a string of attributes of node.
-    pub attrs: &mut String,
     // the HTML of any _document Node
     // used only if the node is already in
     // HTML format.
@@ -48,11 +46,7 @@ impl Display for Node {
 impl Node {
     pub fn new(code: &str) -> Self {
         let trimmed = code.trim();
-        let split: Vec<String> = trimmed
-            .to_string()
-            .split_whitespace()
-            .map(str::to_string)
-            .collect();
+        let split: Vec<String> = trimmed.split_whitespace().map(str::to_string).collect();
         let tag;
         let mut inner = "";
         if is_string_line(String::from(trimmed)) {
@@ -61,14 +55,22 @@ impl Node {
         } else {
             tag = split[0].clone();
         }
-        let new_node = Node {
+        return Node {
             code: String::from(code),
             tag,
             line_number: 0,
             indent: crate::utils::get_indent_level(String::from(code)),
-            attrs: String::new(),
             inner: String::from(inner),
         };
-        return new_node;
+    }
+    pub fn chain(&self, add_code: String) -> Self {
+        /*
+            the chain method allows us to concatenate another
+            piece of code to a node, allowing the usage of Mark's
+            "and" statement.
+        */
+        let code = add_code.trim();
+        // TODO: remove "and" here
+        return Node::new(&(self.code.clone() + &code));
     }
 }
