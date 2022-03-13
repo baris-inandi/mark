@@ -31,7 +31,9 @@ fn markdown(code: String) -> String {
 pub fn preprocess(line: &str, code: String, processor: String) -> Node {
     // JavaScript, CSS, HTML, and plaintext should always be handled as plaintext
     let inner;
-    if processor == "script" {
+    if processor == "" {
+        inner = code;
+    } else if processor == "script" {
         inner = wrap_script(code);
     } else if processor == "style" {
         inner = wrap_style(code);

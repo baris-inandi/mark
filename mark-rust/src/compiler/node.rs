@@ -88,4 +88,24 @@ impl Node {
             inner: String::from(inner),
         };
     }
+    pub fn opening_tag(&self) -> String {
+        /*
+            returns the opening tag of the node.
+            (Eg. <div id="logo">)
+        */
+        if self.tag == "_document" {
+            return String::from(format!("{}", self.inner));
+        }
+        return String::from(format!("<{}{}>", self.tag, self.attributes()));
+    }
+    pub fn closing_tag(&self) -> String {
+        /*
+            returns the closing tag of the node.
+            (Eg. </div>)
+        */
+        if self.tag == "_document" {
+            return String::from("");
+        }
+        return String::from(format!("</{}>", self.tag));
+    }
 }

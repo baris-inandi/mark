@@ -41,6 +41,12 @@ impl Node {
         } else {
             String::new()
         };
-        return classes_attr + &attrs;
+        let complete_attrs = classes_attr + &attrs;
+        let spacer = if complete_attrs.len() > 0 {
+            String::from(" ")
+        } else {
+            String::new()
+        };
+        return spacer + &complete_attrs;
     }
 }

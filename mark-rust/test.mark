@@ -1,10 +1,18 @@
 html
-	head
-	and .class
-		"hi"
-			script`console.log("hi")
-			const func = (a,b) => {
-				return a+b
-			}
-			`
-	body .hi
+  head
+  body
+    h1 #title-id
+    and .class
+    and attr foo="bar"
+      "This is the title"
+      'This is the title.'
+      "this is a \string"
+
+      `
+        This is a multiline string.
+        Look ma, multiple lines!
+      `
+    script`
+      console.log("hello from javascript");
+    `
+  div .bg-red-400 #id
