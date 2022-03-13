@@ -49,329 +49,564 @@
         "body": "and",
         "description": "Mark \"and\" keyword"
     },
-    "External require @tailwind": {
-        "prefix": "@tailwind",
-        "body": "@tailwind",
-        "description": "external require @tailwind"
+    "<script> tag": {
+        "prefix": "script",
+        "body": "script",
+        "description": "<script> HTML tag"
     },
-    "External require @bootstrap": {
-        "prefix": "@bootstrap",
-        "body": "@bootstrap",
-        "description": "external require @bootstrap"
+    "<style> tag": {
+        "prefix": "style",
+        "body": "style",
+        "description": "<style> HTML tag"
     },
-    "External require @jquery": {
-        "prefix": "@jquery",
-        "body": "@jquery",
-        "description": "external require @jquery"
+    "<a> tag": {
+        "prefix": "a",
+        "body": "a",
+        "description": "<a> HTML tag"
     },
-    "External require @lodash": {
-        "prefix": "@lodash",
-        "body": "@lodash",
-        "description": "external require @lodash"
-    },
-    "External require @fontawesome": {
-        "prefix": "@fontawesome",
-        "body": "@fontawesome",
-        "description": "external require @fontawesome"
-    },
-    "External require @petite-vue": {
-        "prefix": "@petite-vue",
-        "body": "@petite-vue",
-        "description": "external require @petite-vue"
-    },
-    "HTML <abbr> tag": {
+    "<abbr> tag": {
         "prefix": "abbr",
         "body": "abbr",
-        "description": "an HTML tag"
+        "description": "<abbr> HTML tag"
     },
-    "HTML <address> tag": {
+    "<address> tag": {
         "prefix": "address",
         "body": "address",
-        "description": "an HTML tag"
+        "description": "<address> HTML tag"
     },
-    "HTML <article> tag": {
+    "<area> tag": {
+        "prefix": "area",
+        "body": "area",
+        "description": "<area> HTML tag"
+    },
+    "<article> tag": {
         "prefix": "article",
         "body": "article",
-        "description": "an HTML tag"
+        "description": "<article> HTML tag"
     },
-    "HTML <blockquote> tag": {
+    "<aside> tag": {
+        "prefix": "aside",
+        "body": "aside",
+        "description": "<aside> HTML tag"
+    },
+    "<audio> tag": {
+        "prefix": "audio",
+        "body": "audio",
+        "description": "<audio> HTML tag"
+    },
+    "<b> tag": {
+        "prefix": "b",
+        "body": "b",
+        "description": "<b> HTML tag"
+    },
+    "<base> tag": {
+        "prefix": "base",
+        "body": "base",
+        "description": "<base> HTML tag"
+    },
+    "<bdi> tag": {
+        "prefix": "bdi",
+        "body": "bdi",
+        "description": "<bdi> HTML tag"
+    },
+    "<bdo> tag": {
+        "prefix": "bdo",
+        "body": "bdo",
+        "description": "<bdo> HTML tag"
+    },
+    "<blockquote> tag": {
         "prefix": "blockquote",
         "body": "blockquote",
-        "description": "an HTML tag"
+        "description": "<blockquote> HTML tag"
     },
-    "HTML <body> tag": {
+    "<body> tag": {
         "prefix": "body",
         "body": "body",
-        "description": "an HTML tag"
+        "description": "<body> HTML tag"
     },
-    "HTML <br> tag": {
+    "<br> tag": {
         "prefix": "br",
         "body": "br",
-        "description": "an HTML tag"
+        "description": "<br> HTML tag"
     },
-    "HTML <button> tag": {
+    "<button> tag": {
         "prefix": "button",
         "body": "button",
-        "description": "an HTML tag"
+        "description": "<button> HTML tag"
     },
-    "HTML <canvas> tag": {
+    "<canvas> tag": {
         "prefix": "canvas",
         "body": "canvas",
-        "description": "an HTML tag"
+        "description": "<canvas> HTML tag"
     },
-    "HTML <caption> tag": {
+    "<caption> tag": {
         "prefix": "caption",
         "body": "caption",
-        "description": "an HTML tag"
+        "description": "<caption> HTML tag"
     },
-    "HTML <cite> tag": {
+    "<cite> tag": {
         "prefix": "cite",
         "body": "cite",
-        "description": "an HTML tag"
+        "description": "<cite> HTML tag"
     },
-    "HTML <code> tag": {
+    "<code> tag": {
         "prefix": "code",
         "body": "code",
-        "description": "an HTML tag"
+        "description": "<code> HTML tag"
     },
-    "HTML <div> tag": {
+    "<col> tag": {
+        "prefix": "col",
+        "body": "col",
+        "description": "<col> HTML tag"
+    },
+    "<colgroup> tag": {
+        "prefix": "colgroup",
+        "body": "colgroup",
+        "description": "<colgroup> HTML tag"
+    },
+    "<data> tag": {
+        "prefix": "data",
+        "body": "data",
+        "description": "<data> HTML tag"
+    },
+    "<datalist> tag": {
+        "prefix": "datalist",
+        "body": "datalist",
+        "description": "<datalist> HTML tag"
+    },
+    "<dd> tag": {
+        "prefix": "dd",
+        "body": "dd",
+        "description": "<dd> HTML tag"
+    },
+    "<del> tag": {
+        "prefix": "del",
+        "body": "del",
+        "description": "<del> HTML tag"
+    },
+    "<details> tag": {
+        "prefix": "details",
+        "body": "details",
+        "description": "<details> HTML tag"
+    },
+    "<dfn> tag": {
+        "prefix": "dfn",
+        "body": "dfn",
+        "description": "<dfn> HTML tag"
+    },
+    "<dialog> tag": {
+        "prefix": "dialog",
+        "body": "dialog",
+        "description": "<dialog> HTML tag"
+    },
+    "<div> tag": {
         "prefix": "div",
         "body": "div",
-        "description": "an HTML tag"
+        "description": "<div> HTML tag"
     },
-    "HTML <em> tag": {
+    "<dl> tag": {
+        "prefix": "dl",
+        "body": "dl",
+        "description": "<dl> HTML tag"
+    },
+    "<dt> tag": {
+        "prefix": "dt",
+        "body": "dt",
+        "description": "<dt> HTML tag"
+    },
+    "<em> tag": {
         "prefix": "em",
         "body": "em",
-        "description": "an HTML tag"
+        "description": "<em> HTML tag"
     },
-    "HTML <figure> tag": {
+    "<embed> tag": {
+        "prefix": "embed",
+        "body": "embed",
+        "description": "<embed> HTML tag"
+    },
+    "<fieldset> tag": {
+        "prefix": "fieldset",
+        "body": "fieldset",
+        "description": "<fieldset> HTML tag"
+    },
+    "<figure> tag": {
         "prefix": "figure",
         "body": "figure",
-        "description": "an HTML tag"
+        "description": "<figure> HTML tag"
     },
-    "HTML <footer> tag": {
+    "<footer> tag": {
         "prefix": "footer",
         "body": "footer",
-        "description": "an HTML tag"
+        "description": "<footer> HTML tag"
     },
-    "HTML <form> tag": {
+    "<form> tag": {
         "prefix": "form",
         "body": "form",
-        "description": "an HTML tag"
+        "description": "<form> HTML tag"
     },
-    "HTML <h1> tag": {
+    "<h1> tag": {
         "prefix": "h1",
         "body": "h1",
-        "description": "an HTML tag"
+        "description": "<h1> HTML tag"
     },
-    "HTML <h2> tag": {
+    "<h2> tag": {
         "prefix": "h2",
         "body": "h2",
-        "description": "an HTML tag"
+        "description": "<h2> HTML tag"
     },
-    "HTML <h3> tag": {
+    "<h3> tag": {
         "prefix": "h3",
         "body": "h3",
-        "description": "an HTML tag"
+        "description": "<h3> HTML tag"
     },
-    "HTML <h4> tag": {
+    "<h4> tag": {
         "prefix": "h4",
         "body": "h4",
-        "description": "an HTML tag"
+        "description": "<h4> HTML tag"
     },
-    "HTML <h5> tag": {
+    "<h5> tag": {
         "prefix": "h5",
         "body": "h5",
-        "description": "an HTML tag"
+        "description": "<h5> HTML tag"
     },
-    "HTML <h6> tag": {
+    "<h6> tag": {
         "prefix": "h6",
         "body": "h6",
-        "description": "an HTML tag"
+        "description": "<h6> HTML tag"
     },
-    "HTML <head> tag": {
+    "<head> tag": {
         "prefix": "head",
         "body": "head",
-        "description": "an HTML tag"
+        "description": "<head> HTML tag"
     },
-    "HTML <header> tag": {
+    "<header> tag": {
         "prefix": "header",
         "body": "header",
-        "description": "an HTML tag"
+        "description": "<header> HTML tag"
     },
-    "HTML <html> tag": {
+    "<hgroup> tag": {
+        "prefix": "hgroup",
+        "body": "hgroup",
+        "description": "<hgroup> HTML tag"
+    },
+    "<hr> tag": {
+        "prefix": "hr",
+        "body": "hr",
+        "description": "<hr> HTML tag"
+    },
+    "<html> tag": {
         "prefix": "html",
         "body": "html",
-        "description": "an HTML tag"
+        "description": "<html> HTML tag"
     },
-    "HTML <iframe> tag": {
+    "<i> tag": {
+        "prefix": "i",
+        "body": "i",
+        "description": "<i> HTML tag"
+    },
+    "<iframe> tag": {
         "prefix": "iframe",
         "body": "iframe",
-        "description": "an HTML tag"
+        "description": "<iframe> HTML tag"
     },
-    "HTML <img> tag": {
+    "<img> tag": {
         "prefix": "img",
         "body": "img",
-        "description": "an HTML tag"
+        "description": "<img> HTML tag"
     },
-    "HTML <input> tag": {
+    "<input> tag": {
         "prefix": "input",
         "body": "input",
-        "description": "an HTML tag"
+        "description": "<input> HTML tag"
     },
-    "HTML <label> tag": {
+    "<ins> tag": {
+        "prefix": "ins",
+        "body": "ins",
+        "description": "<ins> HTML tag"
+    },
+    "<kbd> tag": {
+        "prefix": "kbd",
+        "body": "kbd",
+        "description": "<kbd> HTML tag"
+    },
+    "<keygen> tag": {
+        "prefix": "keygen",
+        "body": "keygen",
+        "description": "<keygen> HTML tag"
+    },
+    "<label> tag": {
         "prefix": "label",
         "body": "label",
-        "description": "an HTML tag"
+        "description": "<label> HTML tag"
     },
-    "HTML <legend> tag": {
+    "<legend> tag": {
         "prefix": "legend",
         "body": "legend",
-        "description": "an HTML tag"
+        "description": "<legend> HTML tag"
     },
-    "HTML <li> tag": {
+    "<li> tag": {
         "prefix": "li",
         "body": "li",
-        "description": "an HTML tag"
+        "description": "<li> HTML tag"
     },
-    "HTML <main> tag": {
+    "<link> tag": {
+        "prefix": "link",
+        "body": "link",
+        "description": "<link> HTML tag"
+    },
+    "<main> tag": {
         "prefix": "main",
         "body": "main",
-        "description": "an HTML tag"
+        "description": "<main> HTML tag"
     },
-    "HTML <meta> tag": {
+    "<map> tag": {
+        "prefix": "map",
+        "body": "map",
+        "description": "<map> HTML tag"
+    },
+    "<menu> tag": {
+        "prefix": "menu",
+        "body": "menu",
+        "description": "<menu> HTML tag"
+    },
+    "<menuitem> tag": {
+        "prefix": "menuitem",
+        "body": "menuitem",
+        "description": "<menuitem> HTML tag"
+    },
+    "<meta> tag": {
         "prefix": "meta",
         "body": "meta",
-        "description": "an HTML tag"
+        "description": "<meta> HTML tag"
     },
-    "HTML <nav> tag": {
+    "<meter> tag": {
+        "prefix": "meter",
+        "body": "meter",
+        "description": "<meter> HTML tag"
+    },
+    "<nav> tag": {
         "prefix": "nav",
         "body": "nav",
-        "description": "an HTML tag"
+        "description": "<nav> HTML tag"
     },
-    "HTML <noscript> tag": {
+    "<noscript> tag": {
         "prefix": "noscript",
         "body": "noscript",
-        "description": "an HTML tag"
+        "description": "<noscript> HTML tag"
     },
-    "HTML <object> tag": {
+    "<object> tag": {
         "prefix": "object",
         "body": "object",
-        "description": "an HTML tag"
+        "description": "<object> HTML tag"
     },
-    "HTML <ol> tag": {
+    "<ol> tag": {
         "prefix": "ol",
         "body": "ol",
-        "description": "an HTML tag"
+        "description": "<ol> HTML tag"
     },
-    "HTML <option> tag": {
+    "<optgroup> tag": {
+        "prefix": "optgroup",
+        "body": "optgroup",
+        "description": "<optgroup> HTML tag"
+    },
+    "<option> tag": {
         "prefix": "option",
         "body": "option",
-        "description": "an HTML tag"
+        "description": "<option> HTML tag"
     },
-    "HTML <output> tag": {
+    "<output> tag": {
         "prefix": "output",
         "body": "output",
-        "description": "an HTML tag"
+        "description": "<output> HTML tag"
     },
-    "HTML <pre> tag": {
+    "<p> tag": {
+        "prefix": "p",
+        "body": "p",
+        "description": "<p> HTML tag"
+    },
+    "<param> tag": {
+        "prefix": "param",
+        "body": "param",
+        "description": "<param> HTML tag"
+    },
+    "<pre> tag": {
         "prefix": "pre",
         "body": "pre",
-        "description": "an HTML tag"
+        "description": "<pre> HTML tag"
     },
-    "HTML <progress> tag": {
+    "<progress> tag": {
         "prefix": "progress",
         "body": "progress",
-        "description": "an HTML tag"
+        "description": "<progress> HTML tag"
     },
-    "HTML <select> tag": {
+    "<q> tag": {
+        "prefix": "q",
+        "body": "q",
+        "description": "<q> HTML tag"
+    },
+    "<rb> tag": {
+        "prefix": "rb",
+        "body": "rb",
+        "description": "<rb> HTML tag"
+    },
+    "<rp> tag": {
+        "prefix": "rp",
+        "body": "rp",
+        "description": "<rp> HTML tag"
+    },
+    "<rt> tag": {
+        "prefix": "rt",
+        "body": "rt",
+        "description": "<rt> HTML tag"
+    },
+    "<rtc> tag": {
+        "prefix": "rtc",
+        "body": "rtc",
+        "description": "<rtc> HTML tag"
+    },
+    "<ruby> tag": {
+        "prefix": "ruby",
+        "body": "ruby",
+        "description": "<ruby> HTML tag"
+    },
+    "<s> tag": {
+        "prefix": "s",
+        "body": "s",
+        "description": "<s> HTML tag"
+    },
+    "<samp> tag": {
+        "prefix": "samp",
+        "body": "samp",
+        "description": "<samp> HTML tag"
+    },
+    "<section> tag": {
+        "prefix": "section",
+        "body": "section",
+        "description": "<section> HTML tag"
+    },
+    "<select> tag": {
         "prefix": "select",
         "body": "select",
-        "description": "an HTML tag"
+        "description": "<select> HTML tag"
     },
-    "HTML <source> tag": {
+    "<small> tag": {
+        "prefix": "small",
+        "body": "small",
+        "description": "<small> HTML tag"
+    },
+    "<source> tag": {
         "prefix": "source",
         "body": "source",
-        "description": "an HTML tag"
+        "description": "<source> HTML tag"
     },
-    "HTML <span> tag": {
+    "<span> tag": {
         "prefix": "span",
         "body": "span",
-        "description": "an HTML tag"
+        "description": "<span> HTML tag"
     },
-    "HTML <strong> tag": {
+    "<strong> tag": {
         "prefix": "strong",
         "body": "strong",
-        "description": "an HTML tag"
+        "description": "<strong> HTML tag"
     },
-    "HTML <sub> tag": {
+    "<sub> tag": {
         "prefix": "sub",
         "body": "sub",
-        "description": "an HTML tag"
+        "description": "<sub> HTML tag"
     },
-    "HTML <table> tag": {
+    "<summary> tag": {
+        "prefix": "summary",
+        "body": "summary",
+        "description": "<summary> HTML tag"
+    },
+    "<sup> tag": {
+        "prefix": "sup",
+        "body": "sup",
+        "description": "<sup> HTML tag"
+    },
+    "<table> tag": {
         "prefix": "table",
         "body": "table",
-        "description": "an HTML tag"
+        "description": "<table> HTML tag"
     },
-    "HTML <tbody> tag": {
+    "<tbody> tag": {
         "prefix": "tbody",
         "body": "tbody",
-        "description": "an HTML tag"
+        "description": "<tbody> HTML tag"
     },
-    "HTML <td> tag": {
+    "<td> tag": {
         "prefix": "td",
         "body": "td",
-        "description": "an HTML tag"
+        "description": "<td> HTML tag"
     },
-    "HTML <template> tag": {
+    "<template> tag": {
         "prefix": "template",
         "body": "template",
-        "description": "an HTML tag"
+        "description": "<template> HTML tag"
     },
-    "HTML <textarea> tag": {
+    "<textarea> tag": {
         "prefix": "textarea",
         "body": "textarea",
-        "description": "an HTML tag"
+        "description": "<textarea> HTML tag"
     },
-    "HTML <th> tag": {
+    "<tfoot> tag": {
+        "prefix": "tfoot",
+        "body": "tfoot",
+        "description": "<tfoot> HTML tag"
+    },
+    "<th> tag": {
         "prefix": "th",
         "body": "th",
-        "description": "an HTML tag"
+        "description": "<th> HTML tag"
     },
-    "HTML <thead> tag": {
+    "<thead> tag": {
         "prefix": "thead",
         "body": "thead",
-        "description": "an HTML tag"
+        "description": "<thead> HTML tag"
     },
-    "HTML <time> tag": {
+    "<time> tag": {
         "prefix": "time",
         "body": "time",
-        "description": "an HTML tag"
+        "description": "<time> HTML tag"
     },
-    "HTML <title> tag": {
+    "<title> tag": {
         "prefix": "title",
         "body": "title",
-        "description": "an HTML tag"
+        "description": "<title> HTML tag"
     },
-    "HTML <tr> tag": {
+    "<tr> tag": {
         "prefix": "tr",
         "body": "tr",
-        "description": "an HTML tag"
+        "description": "<tr> HTML tag"
     },
-    "HTML <ul> tag": {
+    "<track> tag": {
+        "prefix": "track",
+        "body": "track",
+        "description": "<track> HTML tag"
+    },
+    "<u> tag": {
+        "prefix": "u",
+        "body": "u",
+        "description": "<u> HTML tag"
+    },
+    "<ul> tag": {
         "prefix": "ul",
         "body": "ul",
-        "description": "an HTML tag"
+        "description": "<ul> HTML tag"
     },
-    "HTML <var> tag": {
+    "<var> tag": {
         "prefix": "var",
         "body": "var",
-        "description": "an HTML tag"
+        "description": "<var> HTML tag"
     },
-    "HTML <video> tag": {
+    "<video> tag": {
         "prefix": "video",
         "body": "video",
-        "description": "an HTML tag"
+        "description": "<video> HTML tag"
+    },
+    "<wbr> tag": {
+        "prefix": "wbr",
+        "body": "wbr",
+        "description": "<wbr> HTML tag"
     }
 }
