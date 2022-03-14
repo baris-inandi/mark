@@ -28,11 +28,11 @@ impl MarkModule {
                 out += n.closing_tag().as_str();
             }
             if n.indent < n_next.indent {
+                stack.push(n.closing_tag());
                 let indent_difference = n_next.indent - n.indent;
                 if indent_difference % tab_width != 0 {
                     crate::errs::throw("Indentation error");
                 }
-                stack.push(n.closing_tag());
             } else if n.indent > n_next.indent {
                 let mut indent_difference = n.indent - n_next.indent;
                 if indent_difference % tab_width != 0 {
@@ -43,10 +43,17 @@ impl MarkModule {
                     stack.pop();
                     out += stack[stack.len() - 1].as_str();
                 }
-                stack.push(n.closing_tag());
+                for i in &stack {
+                    print!("{}", i);
+                }
+                println!("")
             }
         }
         stack.reverse();
+        for i in &stack {
+            print!("{}", i);
+        }
+        println!("");
         for close_node in &stack {
             out += close_node.as_str();
         }

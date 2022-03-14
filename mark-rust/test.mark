@@ -5,8 +5,3 @@ html
       "This is the continuation"
     p .sub
       "I am a sibling."
-    script`
-      console.log("hi");
-    `
-    p
-      "hello"
