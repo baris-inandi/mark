@@ -17,7 +17,7 @@ impl MarkModule {
     pub fn to_html(&self) -> String {
         let mut out = String::new();
         let mut stack: Vec<String> = Vec::new();
-        let tab_width = 2;
+        let tab_width = 4;
         for (idx, n) in self.nodelist.iter().enumerate() {
             if n.tag == "_eof" {
                 break;
@@ -39,17 +39,16 @@ impl MarkModule {
                     crate::errs::throw("Indentation error");
                 }
                 indent_difference /= tab_width;
-                for idx in 0..indent_difference {
-                    println!("idx = {:?}", idx);
+                for _ in 0..indent_difference {
                     stack.pop();
                     out += stack[stack.len() - 1].as_str();
                 }
                 stack.push(n.closing_tag());
             }
-            stack.reverse();
-            for close_node in &stack {
-                out += close_node.as_str();
-            }
+        }
+        stack.reverse();
+        for close_node in &stack {
+            out += close_node.as_str();
         }
         return out;
     }

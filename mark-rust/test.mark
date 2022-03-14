@@ -1,18 +1,12 @@
 html
-  head
   body
-    h1 #title-id
-    and .class
-    and attr foo="bar"
-      "This is the title"
-      'This is the title.'
-      "this is a \string"
-
-      `
-        This is a multiline string.
-        Look ma, multiple lines!
-      `
+    h1
+      "This is a heading"
+      "This is the continuation"
+    p .sub
+      "I am a sibling."
     script`
-      console.log("hello from javascript");
+      console.log("hi");
     `
-  div .bg-red-400 #id
+    p
+      "hello"
