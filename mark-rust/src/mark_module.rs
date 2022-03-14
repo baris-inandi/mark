@@ -17,7 +17,7 @@ impl MarkModule {
     pub fn to_html(&self) -> String {
         let mut out = String::new();
         let mut stack: Vec<String> = Vec::new();
-        let tab_width = 4;
+        let tab_width = 2;
         for (idx, n) in self.nodelist.iter().enumerate() {
             if n.tag == "_eof" {
                 break;
