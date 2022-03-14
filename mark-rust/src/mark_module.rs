@@ -24,11 +24,11 @@ impl MarkModule {
             }
             let n_next = &self.nodelist[idx + 1];
             out += n.opening_tag().as_str();
+            stack.push(n.closing_tag());
             if n.indent >= n_next.indent {
                 out += n.closing_tag().as_str();
             }
             if n.indent < n_next.indent {
-                stack.push(n.closing_tag());
                 let indent_difference = n_next.indent - n.indent;
                 if indent_difference % tab_width != 0 {
                     crate::errs::throw("Indentation error");
