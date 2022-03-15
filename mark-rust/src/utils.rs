@@ -1,5 +1,5 @@
 extern crate base64;
-use base64::decode;
+use base64::encode;
 
 pub fn get_indent_level(code: String) -> usize {
     let code = str::replace(&code, "\t", "    ");
@@ -7,10 +7,9 @@ pub fn get_indent_level(code: String) -> usize {
 }
 
 pub fn b64encode(path: &str) -> String {
-    use base64::encode;
     return encode(path.as_bytes());
 }
 
-pub fn b64decode(e: &str) -> String {
+/* pub fn b64decode(e: &str) -> String {
     return String::from_utf8_lossy(&decode(e).unwrap()[..]).to_string();
-}
+} */
