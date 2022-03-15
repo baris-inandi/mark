@@ -6,6 +6,7 @@
         _document -> represents a plaintext node. Should always be valid HTML.
 */
 
+use crate::require::require;
 use std::fmt::Display;
 
 pub struct Node {
@@ -56,6 +57,9 @@ impl Node {
             inner = rm_first_last(trimmed);
         } else {
             tag = split[0].clone();
+        }
+        if tag == "require" {
+            return require(tag);
         }
         return Node {
             code: String::from(code),
