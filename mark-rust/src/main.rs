@@ -5,5 +5,5 @@ pub mod require;
 pub mod utils;
 
 fn main() {
-    compiler::compile(String::from("test.mark"));
+    compiler::compile_string("require test.mark");
 }
