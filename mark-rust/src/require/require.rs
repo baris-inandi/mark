@@ -1,5 +1,5 @@
-use crate::compiler::node::Node;
 use crate::compiler::remove_comments;
+use crate::compiler::{compile_string, node::Node, preprocess::get_preprocess_inner_html};
 use std::fs;
 
 pub fn require(code: &str) -> Node {
@@ -17,10 +17,25 @@ pub fn require(code: &str) -> Node {
         Err(_) => crate::errs::throw("Could not read file, does it exist?"),
     };
     let filename_dot_split: Vec<&str> = filename.split(".").collect();
-    let extension = filename_dot_split[filename_dot_split.len() - 1];
+    let mut ext = filename_dot_split[filename_dot_split.len() - 1];
     let contents = remove_comments::remove_comments(f);
-    match extension {
-        "mark" -> 
+    match ext {
+        "mark" => {
+            compile_string(&contents);
+        }
+        &_ => {
+            // .js should be parsed with processor "script", so change variable ext.
+            if vec!["js", "cjs"].contains(&ext) {
+                ext = "script";
+            } else if ext == "mjs" {
+                ext = "module";
+            } else if ext == "css" {
+                ext = "style";
+            }
+            let inner = get_preprocess_inner_html(contents, String::from(ext));
+            return Node::document(code, &inner);
+        }
     }
-    return Node::document(code, "<div>out</div>");
+    crate::errs::throw("require statement failed");
+    return Node::document(code, "");
 }

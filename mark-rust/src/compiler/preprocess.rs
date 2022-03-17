@@ -12,6 +12,10 @@ fn wrap_script(code: String) -> String {
     return format!("<script>{}</script>", code);
 }
 
+fn wrap_mjs(code: String) -> String {
+    return format!("<script type=\"module\">{}</script>", code);
+}
+
 /*
     Requires compilation step
 */
@@ -28,13 +32,14 @@ fn markdown(code: String) -> String {
     return code;
 }
 
-pub fn preprocess(line: &str, code: String, processor: String) -> Node {
-    // JavaScript, CSS, HTML, and plaintext should always be handled as plaintext
+pub fn get_preprocess_inner_html(code: String, processor: String) -> String {
     let inner;
     if processor == "" {
         inner = code;
     } else if processor == "script" {
         inner = wrap_script(code);
+    } else if processor == "module" {
+        inner = wrap_mjs(code);
     } else if processor == "style" {
         inner = wrap_style(code);
     } else if processor == "sass" {
@@ -45,7 +50,13 @@ pub fn preprocess(line: &str, code: String, processor: String) -> Node {
         inner = markdown(code);
     } else {
         inner = String::new();
-        crate::errs::throw("Unknown block annotation");
+        crate::errs::throw(&format!("Cannot parse type {}", processor));
     }
+    return inner;
+}
+
+pub fn preprocess(line: &str, code: String, processor: String) -> Node {
+    // JavaScript, CSS, HTML, and plaintext should always be handled as plaintext
+    let inner = get_preprocess_inner_html(code, processor);
     return Node::document(line, inner.as_str());
 }

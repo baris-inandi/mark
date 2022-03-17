@@ -2,7 +2,7 @@ use super::block::block;
 use super::node::Node;
 use crate::mark_module::MarkModule;
 
-pub fn parse_lines(code: String, filename: &str) {
+pub fn parse_lines(code: String, filename: &str) -> String {
     let mut skip_buffer: usize = 0;
     let mut dom: Vec<Node> = Vec::new();
     for (idx, line) in code.lines().enumerate() {
@@ -35,5 +35,5 @@ pub fn parse_lines(code: String, filename: &str) {
         After generating an indented nodelist, create a mark module
     */
     let mark_module = MarkModule::new(String::from(filename), dom);
-    println!("{}", mark_module.to_html());
+    return mark_module.to_html();
 }
