@@ -13,21 +13,27 @@ pub fn require(code: &str) -> Node {
         crate::errs::throw("require only accepts one argument");
     }
     let filename = split_whitespace[0];
-
-    // create new cache instance
-    let cache = caching::MarkCache::new(filename.to_string()).unwrap();
-    cache.get_if_cached().unwrap();
-
     let f = match fs::read_to_string(filename) {
         Ok(f) => f,
         Err(_) => crate::errs::throw("Could not read file, does it exist?"),
     };
+
+    // create new cache instance
+    let cache = caching::MarkCache::new(filename.to_string()).unwrap();
+    // return cached value if available
+    if let Ok(cached_code) = cache.get_if_cached() {
+        println!("USING CACHED CODE");
+        return Node::document(code, &cached_code);
+    }
+
     let filename_dot_split: Vec<&str> = filename.split(".").collect();
     let mut ext = filename_dot_split[filename_dot_split.len() - 1];
     let contents = remove_comments::remove_comments(f);
     match ext {
         "mark" => {
-            return Node::document(code, &compile_string(&contents));
+            let compiled = compile_string(&contents);
+            cache.update(&compiled).unwrap();
+            return Node::document(code, &compiled);
         }
         &_ => {
             // .js should be parsed with processor "script", so change variable ext.
@@ -39,6 +45,7 @@ pub fn require(code: &str) -> Node {
                 ext = "style";
             }
             let inner = get_preprocess_inner_html(contents, String::from(ext));
+            cache.update(&inner).unwrap();
             return Node::document(code, &inner);
         }
     }
