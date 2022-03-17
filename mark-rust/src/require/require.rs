@@ -21,7 +21,7 @@ pub fn require(code: &str) -> Node {
     let contents = remove_comments::remove_comments(f);
     match ext {
         "mark" => {
-            compile_string(&contents);
+            return Node::document(code, &compile_string(&contents));
         }
         &_ => {
             // .js should be parsed with processor "script", so change variable ext.
@@ -36,6 +36,4 @@ pub fn require(code: &str) -> Node {
             return Node::document(code, &inner);
         }
     }
-    crate::errs::throw("require statement failed");
-    return Node::document(code, "");
 }
