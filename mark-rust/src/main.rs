@@ -1,3 +1,4 @@
+pub mod caching;
 pub mod compiler;
 pub mod errs;
 pub mod mark_module;
