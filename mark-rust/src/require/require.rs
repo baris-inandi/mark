@@ -1,3 +1,4 @@
+use crate::caching;
 use crate::compiler::remove_comments;
 use crate::compiler::{compile_string, node::Node, preprocess::get_preprocess_inner_html};
 use std::fs;
@@ -12,6 +13,11 @@ pub fn require(code: &str) -> Node {
         crate::errs::throw("require only accepts one argument");
     }
     let filename = split_whitespace[0];
+
+    // create new cache instance
+    let cache = caching::MarkCache::new(filename.to_string()).unwrap();
+    cache.get_if_cached().unwrap();
+
     let f = match fs::read_to_string(filename) {
         Ok(f) => f,
         Err(_) => crate::errs::throw("Could not read file, does it exist?"),

@@ -25,7 +25,7 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
 
 # Thumbnails
 ._*
@@ -418,3 +418,4 @@ playground/
 ignore/
 *.pex
 main
+.mark
