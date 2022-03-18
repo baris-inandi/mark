@@ -29,7 +29,7 @@ fn scss(code: String) -> String {
 }
 
 fn markdown(code: String) -> String {
-    return code;
+    return format!("<div class=\"mark-md\">{}</div>", code);
 }
 
 pub fn get_preprocess_inner_html(code: String, processor: String) -> String {

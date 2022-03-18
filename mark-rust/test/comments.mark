@@ -1,0 +1,15 @@
+html /* comment
+ */
+ // comment
+// comment
+        // comment
+  body
+    "string"
+    /*
+      Comment
+     */
+    `
+      string that has comments in it /*
+        hi
+       */ // hey
+    `

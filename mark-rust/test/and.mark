@@ -1,0 +1,11 @@
+html
+  body
+    div .class .other .a .b .c
+    and #id
+    and .there
+    and .should
+    and .be
+    and .more
+    and .classes
+    and attr x="y" z="a"
+    and href="/" alt="string"
