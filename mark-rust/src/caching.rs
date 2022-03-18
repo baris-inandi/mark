@@ -66,7 +66,6 @@ impl MarkCache {
 
     pub fn get_if_cached(&self) -> std::io::Result<String> {
         self.ensure()?;
-
         let cached_modification = fs::read_to_string(self.meta_file.clone())?;
         let file_metadata = fs::metadata(self.require_path.clone())?.modified()?;
         let file_modification = system_time_as_string(&file_metadata)?;

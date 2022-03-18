@@ -1,0 +1,5 @@
+{
+  "minify": false,
+  "outputFile": "dist/out.html",
+  "indent": 2
+}
