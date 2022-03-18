@@ -30,16 +30,16 @@ impl MarkModule {
                     stack.pop();
                     out += stack[stack.len() - 1].as_str();
                 }
-                for i in &stack {
+                /*                 for i in &stack {
                     print!("{}", i);
                 }
-                println!("")
+                println!("") */
             }
         }
         stack.reverse();
-        for i in &stack {
+        /*         for i in &stack {
             print!("{}", i);
-        }
+        } */
         println!("");
         for close_node in &stack {
             out += close_node.as_str();

@@ -4,4 +4,4 @@ html
       "This is a heading"
       "This is the continuation"
     p .sub
-      "I am a siblings."
+      "I am a sibling."

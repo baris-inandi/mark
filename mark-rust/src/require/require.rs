@@ -1,5 +1,4 @@
 use crate::caching;
-use crate::compiler::remove_comments;
 use crate::compiler::{compile_string, node::Node, preprocess::get_preprocess_inner_html};
 use std::fs;
 
@@ -13,8 +12,8 @@ pub fn require(code: &str) -> Node {
         crate::errs::throw("require only accepts one argument");
     }
     let filename = split_whitespace[0];
-    let f = match fs::read_to_string(filename) {
-        Ok(f) => f,
+    let contents = match fs::read_to_string(filename) {
+        Ok(contents) => contents,
         Err(_) => crate::errs::throw("Could not read file, does it exist?"),
     };
 
@@ -28,7 +27,6 @@ pub fn require(code: &str) -> Node {
 
     let filename_dot_split: Vec<&str> = filename.split(".").collect();
     let mut ext = filename_dot_split[filename_dot_split.len() - 1];
-    let contents = remove_comments::remove_comments(f);
     match ext {
         "mark" => {
             let compiled = compile_string(&contents);
