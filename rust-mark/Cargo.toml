@@ -2,13 +2,15 @@
 name = "mark"
 version = "0.0.1"
 edition = "2021"
-default-run = "mark"
+default-run = "mark-rust"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 base64 = "0.13.0"
+serde_json = "1.0"
+lazy_static = "1.4.0"
 
 [[bin]]
 name = "mark-rust"
-path = "main.rs"
+path = "src/main.rs"

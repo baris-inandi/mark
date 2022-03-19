@@ -1,16 +1,17 @@
 {
-    "cSpell.words": [
-        "chdir",
-        "getcwd",
-        "gfont",
-        "iframe",
-        "jquery",
-        "noscript",
-        "pyinotify",
-        "Roboto",
-        "tbody",
-        "thead",
-        "Vuepress",
-        "wght"
-    ]
+  "cSpell.words": [
+    "chdir",
+    "getcwd",
+    "gfont",
+    "iframe",
+    "jquery",
+    "markrc",
+    "noscript",
+    "pyinotify",
+    "Roboto",
+    "tbody",
+    "thead",
+    "Vuepress",
+    "wght"
+  ]
 }

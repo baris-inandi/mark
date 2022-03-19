@@ -36,12 +36,13 @@ pub fn parse(code: String, filename: &str) -> String {
             continue;
         }
 
-        // handle blocks
         if trimmed.contains("`") {
+            // handle blocks
             let (n, s) = block(&line, trimmed, code.clone(), idx);
             skip_buffer += s;
             dom.push(n);
         } else if trimmed.starts_with("and ") || trimmed.starts_with("and\n") {
+            // handle "and" statement
             let n = dom[dom.len() - 1].chain(&trimmed);
             dom.pop();
             dom.push(n);

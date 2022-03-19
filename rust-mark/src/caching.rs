@@ -29,8 +29,8 @@ impl MarkCache {
         // TODO: fix line below (doesn't work)
         Path::new(&CACHE_DIR);
         let id = b64encode(&require_path);
-        let cache_file = Path::new(&CACHE_DIR).join(id.clone());
-        let meta_file = Path::new(&CACHE_DIR).join(id.clone() + "_");
+        let cache_file = Path::new(&CACHE_DIR).join(&id);
+        let meta_file = Path::new(&CACHE_DIR).join(format!("{}_", &id));
         if !cache_file.is_file() {
             fs::File::create(&cache_file)?;
         }
@@ -57,23 +57,26 @@ impl MarkCache {
     pub fn update(&self, contents: &str) -> std::io::Result<()> {
         // write the newest modification time to the meta file
         self.ensure()?;
-        fs::write(self.cache_file.clone(), contents)?;
-        let file_metadata = fs::metadata(self.require_path.clone())?.modified()?;
+        fs::write(&self.cache_file, contents)?;
+        let file_metadata = fs::metadata(&self.require_path)?.modified()?;
         let file_modification_time = system_time_as_string(&file_metadata)?;
-        fs::write(self.meta_file.clone(), file_modification_time)?;
+        fs::write(&self.meta_file, file_modification_time)?;
         return Ok(());
     }
 
     pub fn get_if_cached(&self) -> std::io::Result<String> {
         self.ensure()?;
-        let cached_modification = fs::read_to_string(self.meta_file.clone())?;
-        let file_metadata = fs::metadata(self.require_path.clone())?.modified()?;
+        let cached_modification = fs::read_to_string(&self.meta_file)?;
+        let file_metadata = fs::metadata(&self.require_path)?.modified()?;
         let file_modification = system_time_as_string(&file_metadata)?;
         println!("{} {}", cached_modification, file_modification);
         if cached_modification == file_modification {
             return Ok(fs::read_to_string(&self.cache_file)?);
         } else {
-            return Err(std::io::Error::new(std::io::ErrorKind::Other, "foo"));
+            return Err(std::io::Error::new(
+                std::io::ErrorKind::Other,
+                "Cache unavailable",
+            ));
         }
     }
 }

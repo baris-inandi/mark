@@ -1,0 +1,4 @@
+{
+  "name": "mark",
+  "package": [{ "from": "index.mark", "to": "dist/index.html" }]
+}

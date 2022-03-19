@@ -1,6 +1,0 @@
-{
-  "compile": [
-    { "from": "index.mark", "to": "dist/index.html" },
-    { "from": "test.mark", "to": "dist/another.html" }
-  ]
-}

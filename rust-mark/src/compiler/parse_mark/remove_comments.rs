@@ -27,7 +27,7 @@ pub fn remove_comments_in_line(
             comment_context.comment_oneline = false;
             continue;
         }
-        let code = String::from(code) + "\n";
+        let code = format!("{}\n", String::from(code));
         if c == '/' && !string_context.in_string() {
             let next_char = code.chars().nth(index + 1).unwrap();
             if next_char == '/' {
