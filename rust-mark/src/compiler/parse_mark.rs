@@ -49,6 +49,11 @@ pub fn parse(code: String, filename: &str) -> String {
         } else {
             dom.push(Node::new(&line));
         }
+        println!(
+            "{}{}",
+            " ".repeat(dom[dom.len() - 1].indent),
+            dom[dom.len() - 1].opening_tag()
+        );
     }
     /*
         After generating an indented nodelist, create a mark module

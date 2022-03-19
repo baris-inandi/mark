@@ -1,7 +1,7 @@
 html
   body
     h1
+    and .this
       "This is a heading"
-      "This is the continuation"
     p .sub
       "I am a sibling."
