@@ -1,5 +1,5 @@
 // use crate::caching;
-use crate::compiler::{compile_string, node::Node, preprocess::get_preprocess_inner_html};
+use crate::compiler::{node::Node, parse_mark, preprocess::get_preprocess_inner_html};
 use std::fs;
 
 pub fn require(code: &str) -> Node {
@@ -29,7 +29,7 @@ pub fn require(code: &str) -> Node {
     let mut ext = filename_dot_split[filename_dot_split.len() - 1];
     match ext {
         "mark" => {
-            let compiled = compile_string(&contents);
+            let compiled = parse_mark::parse(&contents, &filename);
             // cache.update(&compiled).unwrap();
             return Node::document(code, &compiled);
         }

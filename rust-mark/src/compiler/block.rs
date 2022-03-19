@@ -1,7 +1,7 @@
 use super::node::Node;
 use super::preprocess::preprocess;
 
-pub fn block(line: &str, trimmed_line: String, code: String, block_idx: usize) -> (Node, usize) {
+pub fn block(line: &str, trimmed_line: String, code: &str, block_idx: usize) -> (Node, usize) {
     /*
         Handles blocks. Eg. script`console.log("hi")`
         Handlers are defined in the hashmap below.

@@ -1,18 +1,14 @@
 mod comment_context;
 mod remove_comments;
 mod string_context;
+mod to_html;
 
 use super::block::block;
 use super::node::Node;
-use crate::mark_module::MarkModule;
 use comment_context::MarkCommentContext;
 use string_context::MarkStringContext;
 
-fn is_and_statement(line: &str) -> bool {
-    return line.starts_with("and ") || line.starts_with("and\n");
-}
-
-pub fn parse(code: String, filename: &str) -> String {
+pub fn parse(code: &str, filename: &str) -> String {
     /*
         Parses Mark code
     */
@@ -42,10 +38,10 @@ pub fn parse(code: String, filename: &str) -> String {
 
         if trimmed.contains("`") {
             // handle blocks
-            let (n, s) = block(&line, trimmed, code.clone(), idx);
+            let (n, s) = block(&line, trimmed, &code, idx);
             skip_buffer += s;
             dom.push(n);
-        } else if is_and_statement(&trimmed) {
+        } else if trimmed.starts_with("and ") || trimmed.starts_with("and\n") {
             // handle "and" statement
             let n = dom[dom.len() - 1].chain(&trimmed);
             dom.pop();
@@ -53,23 +49,10 @@ pub fn parse(code: String, filename: &str) -> String {
         } else {
             dom.push(Node::new(&line));
         }
-
-        // get nextline, and stop loop if we reached EOF
-        let nextline = match code.lines().nth(idx + 1) {
-            Some(l) => l.trim(),
-            None => break,
-        };
-        if !is_and_statement(nextline) {
-            println!(
-                "{}{}",
-                " ".repeat(dom[dom.len() - 1].indent),
-                dom[dom.len() - 1].opening_tag()
-            );
-        }
     }
+
     /*
-        After generating an indented nodelist, create a mark module
+        After generating an indented nodelist, convert to HTML
     */
-    let mark_module = MarkModule::new(String::from(filename), dom);
-    return mark_module.to_html();
+    return to_html::nodelist_to_html(&mut dom);
 }
