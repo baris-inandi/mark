@@ -1,7 +1,7 @@
 html
   body
     h1
-    and .this
+    and .this #id
       "This is a heading"
     p .sub
       "I am a sibling."

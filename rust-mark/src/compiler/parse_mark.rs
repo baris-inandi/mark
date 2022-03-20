@@ -54,5 +54,6 @@ pub fn parse(code: &str, filename: &str) -> String {
     /*
         After generating an indented nodelist, convert to HTML
     */
-    return to_html::nodelist_to_html(&mut dom);
+    println!("\nfilename = {:?}", &filename);
+    return to_html::nodelist_to_html(&dom);
 }
