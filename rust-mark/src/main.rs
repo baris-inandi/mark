@@ -9,5 +9,6 @@ pub mod utils;
 fn main() {
     config::load_config();
     let args: Vec<String> = env::args().collect();
-    compiler::parse_mark::parse(&format!("require {}", &args[1]), "<anonymous>");
+    let out = compiler::parse_mark::parse(&format!("require {}", &args[1]), "<anonymous>");
+    println!("{}", out);
 }

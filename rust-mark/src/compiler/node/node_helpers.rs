@@ -27,6 +27,15 @@ impl Node {
         code.replace_range(0..3, "");
         return Node::new(&(self.code.clone() + &code));
     }
+    pub fn eof() -> Self {
+        return Node {
+            indent: 0,
+            code: String::new(),
+            closing_tag: String::new(),
+            tag: String::from("_eof"),
+            inner: String::new(),
+        };
+    }
     pub fn document(code: &str, inner: &str) -> Self {
         /*
             Similar to the new() implementation,
@@ -48,8 +57,8 @@ impl Node {
             (Eg. <div id="logo">)
         */
         if self.tag == "_document" {
-            return String::from(format!("{}", self.inner));
+            return format!("{}", self.inner);
         }
-        return String::from(format!("<{}{}>", self.tag, self.attributes()));
+        return format!("<{}{}>", self.tag, self.attributes());
     }
 }

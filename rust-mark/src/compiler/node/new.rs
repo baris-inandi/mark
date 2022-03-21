@@ -22,7 +22,11 @@ impl Node {
             tag: tag.clone(),
             indent: crate::utils::get_indent_level(String::from(code)),
             inner: String::from(inner),
-            closing_tag: format!("</{}>", tag),
+            closing_tag: if tag == "_document" {
+                String::new()
+            } else {
+                format!("</{}>", tag)
+            },
         };
     }
 }

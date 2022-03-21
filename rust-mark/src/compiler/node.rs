@@ -4,6 +4,7 @@
 
     special nodes:
         _document -> represents a plaintext node. Should always be valid HTML.
+        _eof -> represents the end of the file in a mark module.
 */
 
 mod new;
