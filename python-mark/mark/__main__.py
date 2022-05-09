@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 # Copyright (C) 2022 baris-inandi
 #
 # This file is part of Mark.
