@@ -36,6 +36,15 @@ impl Node {
             inner: String::new(),
         };
     }
+    pub fn null() -> Self {
+        return Node {
+            indent: 0,
+            code: String::new(),
+            closing_tag: String::new(),
+            tag: String::from("null"),
+            inner: String::new(),
+        };
+    }
     pub fn document(code: &str, inner: &str) -> Self {
         /*
             Similar to the new() implementation,

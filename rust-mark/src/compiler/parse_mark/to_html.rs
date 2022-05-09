@@ -4,6 +4,7 @@ pub fn nodelist_to_html(nodelist: &mut Vec<Node>) -> String {
     let mut out = String::new();
     let mut parent_stack: Vec<&str> = Vec::new();
     nodelist.push(Node::eof());
+    let mut prev_node = &Node::null();
     for (idx, node) in nodelist.iter().enumerate() {
         let next_node = match nodelist.get(idx + 1) {
             Some(node) => node,
@@ -40,6 +41,7 @@ pub fn nodelist_to_html(nodelist: &mut Vec<Node>) -> String {
             out += &format!("{}\n", next_node.get_opening_tag());
         }
         out += "\n";
+        prev_node = node;
     }
     parent_stack.reverse();
     for closing_tag in parent_stack {
