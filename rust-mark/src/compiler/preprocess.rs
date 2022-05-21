@@ -1,35 +1,8 @@
 use super::node::Node;
 
-/*
-    Requires no compilation step
-*/
-
-fn wrap_style(code: String) -> String {
-    return format!("<s>{}</style>", code);
-}
-
-fn wrap_script(code: String) -> String {
-    return format!("<script>{}</script>", code);
-}
-
-fn wrap_mjs(code: String) -> String {
-    return format!("<script type=\"module\">{}</script>", code);
-}
-
-/*
-    Requires compilation step
-*/
-
-fn sass(code: String) -> String {
-    return wrap_style(code);
-}
-
-fn scss(code: String) -> String {
-    return wrap_style(code);
-}
-
-fn markdown(code: String) -> String {
-    return format!("<div class=\"mark-md\">{}</div>", code);
+fn sass(code: String, _flavor: String) -> String {
+    let code_processed = &code;
+    return format!("<style>{}</style>", code_processed);
 }
 
 pub fn get_preprocess_inner_html(code: String, processor: String) -> String {
@@ -37,17 +10,19 @@ pub fn get_preprocess_inner_html(code: String, processor: String) -> String {
     if processor == "" {
         inner = code;
     } else if processor == "script" {
-        inner = wrap_script(code);
+        inner = format!("<script>{}</script>", code);
     } else if processor == "module" {
-        inner = wrap_mjs(code);
+        inner = format!("<script type=\"module\">{}</script>", code);
     } else if processor == "style" {
-        inner = wrap_style(code);
+        inner = format!("<style>{}</style>", code);
     } else if processor == "sass" {
-        inner = sass(code);
+        inner = sass(code, processor);
     } else if processor == "scss" {
-        inner = scss(code);
+        inner = sass(code, processor);
+    } else if processor == "python" {
+        inner = format!("<py-script>{}</py-script>", code);
     } else if processor == "md" {
-        inner = markdown(code);
+        inner = format!("<div class=\"mark-md\">{}</div>", code);
     } else {
         inner = String::new();
         crate::errs::throw(&format!("Cannot parse type {}", processor));

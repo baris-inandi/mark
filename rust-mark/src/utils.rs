@@ -1,4 +1,3 @@
-extern crate base64;
 use base64::encode;
 
 pub fn get_indent_level(code: String) -> usize {

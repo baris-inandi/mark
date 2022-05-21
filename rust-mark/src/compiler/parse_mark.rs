@@ -1,16 +1,19 @@
 mod comment_context;
 mod remove_comments;
 mod string_context;
-mod to_html;
 
 use super::block::block;
 use super::node::Node;
 use comment_context::MarkCommentContext;
 use string_context::MarkStringContext;
 
+fn add_to_dom(dom: &mut Vec<Node>, node: Node) {
+    dom.push(node);
+}
+
 pub fn parse(code: &str, filename: &str) -> String {
     /*
-        Parses Mark code
+        Parses Mark code, returns DOM
     */
     let mut skip_buffer: usize = 0;
     let mut dom: Vec<Node> = Vec::new();
@@ -40,14 +43,14 @@ pub fn parse(code: &str, filename: &str) -> String {
             // handle blocks
             let (n, s) = block(&line, trimmed, &code, idx);
             skip_buffer += s;
-            dom.push(n);
+            add_to_dom(&mut dom, n);
         } else if trimmed.starts_with("and ") || trimmed.starts_with("and\n") {
             // handle "and" statement
             let n = dom[dom.len() - 1].chain(&trimmed);
             dom.pop();
-            dom.push(n);
+            add_to_dom(&mut dom, n);
         } else {
-            dom.push(Node::new(&line));
+            add_to_dom(&mut dom, Node::new(&line));
         }
     }
 
@@ -55,5 +58,8 @@ pub fn parse(code: &str, filename: &str) -> String {
         After generating an indented nodelist, convert to HTML
     */
     println!("SOURCE {:?}", &filename);
-    return to_html::nodelist_to_html(&mut dom);
+    for i in &dom {
+        println!("{}", i);
+    }
+    return String::new();
 }

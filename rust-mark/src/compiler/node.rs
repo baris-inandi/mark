@@ -38,7 +38,12 @@ pub struct Node {
 
 impl Display for Node {
     fn fmt(&self, fmt: &mut std::fmt::Formatter) -> std::result::Result<(), std::fmt::Error> {
-        let inner = if self.inner.len() > 0 { "[...]" } else { "" };
-        write!(fmt, "[{}] <{}> {}", self.indent, self.tag, inner)
+        write!(
+            fmt,
+            "⤷ {} <{}> {}",
+            self.indent,
+            self.tag,
+            if self.inner.len() > 0 { "[...]" } else { "" }
+        )
     }
 }

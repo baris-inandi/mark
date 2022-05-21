@@ -3,8 +3,6 @@ use crate::compiler::{node::Node, parse_mark, preprocess::get_preprocess_inner_h
 use std::fs;
 
 pub fn require(code: &str) -> Node {
-    // compiles and creates cache if not cached,
-    // returns the cached code if cached.
     let trimmed = code.trim();
     let mut split_whitespace: Vec<&str> = trimmed.split_whitespace().collect();
     split_whitespace.remove(0);
@@ -16,21 +14,11 @@ pub fn require(code: &str) -> Node {
         Ok(contents) => contents,
         Err(_) => crate::errs::throw("Could not read file, does it exist?"),
     };
-    /*
-       // create new cache instance
-       let cache = caching::MarkCache::new(filename.to_string()).unwrap();
-       // return cached value if available
-       if let Ok(cached_code) = cache.get_if_cached() {
-           println!("USING CACHED CODE");
-           return Node::document(code, &cached_code);
-       }
-    */
     let filename_dot_split: Vec<&str> = filename.split(".").collect();
     let mut ext = filename_dot_split[filename_dot_split.len() - 1];
     match ext {
         "mark" => {
             let compiled = parse_mark::parse(&contents, &filename);
-            // cache.update(&compiled).unwrap();
             return Node::document(code, &compiled);
         }
         &_ => {
@@ -43,7 +31,6 @@ pub fn require(code: &str) -> Node {
                 ext = "style";
             }
             let inner = get_preprocess_inner_html(contents, String::from(ext));
-            // cache.update(&inner).unwrap();
             return Node::document(code, &inner);
         }
     }
